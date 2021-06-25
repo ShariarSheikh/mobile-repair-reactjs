@@ -1,0 +1,59 @@
+.home_hero {
+    position: relative;
+    width: 100%;
+    background-image: url("../../images/headerBgM.jpg");
+    background-size: 1920px;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+  .headerImg{
+    width: 100%;
+    height: 100%;
+  }
+  #homeHeader {
+    background-color: transparent;
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+    min-height: 80vh;
+    display: flex;
+  }
+  #headerImg {
+    max-width: 740px;
+    margin-top: 80px;
+  }
+  
+  /* img bounce  */
+  
+  @-webkit-keyframes bounce {
+    0% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  #img_container {
+    -webkit-animation: bounce 3s infinite ease-in-out;
+    -o-animation: bounce 3s infinite ease-in-out;
+    -ms-animation: bounce 3s infinite ease-in-out;
+    -moz-animation: bounce 3s infinite ease-in-out;
+    animation: bounce 3s infinite ease-in-out;
+  }
+  

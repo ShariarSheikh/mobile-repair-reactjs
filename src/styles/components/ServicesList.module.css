@@ -1,0 +1,30 @@
+#list_container {
+  background-color: #1e40af;
+  width: 100%;
+}
+#list_inner_container {
+  flex-wrap: wrap;
+}
+#stylesCard {
+  width: 260px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  position: relative;
+}
+#title {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s;
+}
+#stylesCard:hover #title {
+  width: 0%;
+}
+/* .servicesListImg{
+ width:100%;
+ height: 100%;
+} */

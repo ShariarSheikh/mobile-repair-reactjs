@@ -1,0 +1,38 @@
+.Footer {
+  width: 100%;
+  height: auto;
+  background-color: #08192b;
+}
+#footer_container {
+  width: 1000px;
+  margin: auto;
+  min-height: 500px;
+  padding-top: 50px;
+}
+.Footer_social_icon {
+  color: #fff;
+  border-radius: 3px;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#iconIdentify_f {
+  background-color: #3b5998;
+}
+#iconIdentify_t {
+  background-color: #55acee;
+}
+#iconIdentify_y {
+  background-color: #b00;
+}
+#Footer_email_send_container {
+  margin-top: 50px;
+  position: relative;
+  max-width: 350px;
+  align-self: center;
+}
