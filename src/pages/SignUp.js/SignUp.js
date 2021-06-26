@@ -1,28 +1,48 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/pagesStyles/SignUp.module.css";
 import { FcGoogle } from "react-icons/fc";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { fireAuth } from "../../firebase";
+import { AuthContext } from "../../components/AuthContext/AuthContext";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [auth, setAuth] = useContext(AuthContext);
+
   const history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const signup = async (e) => {
+    e.preventDefault();
+    register();
+  };
+  const register =  () => {
+    fireAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userAuth) => {
+        userAuth.user
+          .updateProfile({
+            displayName: name,
+            photoURL: "",
+          })
+          .then(() => {
+            setAuth({
+              email: userAuth.user.email,
+              uid: userAuth.user.uid,
+              displayName: name,
+              photoURL: "",
+            });
+            history.replace(from);
+          });
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
   return (
     <div className={styles.SignUp}>
@@ -39,6 +59,8 @@ const SignUp = () => {
               </h1>
 
               <form className="mt-6" action="#" method="POST">
+                {error && <p className="form_error">{error}</p>}
+
                 <div>
                   <label className="block text-gary-700">Name</label>
                   <input
@@ -49,6 +71,8 @@ const SignUp = () => {
                     autoFocus
                     autoComplete="true"
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="mt-4">
@@ -61,6 +85,8 @@ const SignUp = () => {
                      border focus:border-blue-500 focus:bg-white focus:outline-none"
                     autoComplete="true"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -75,9 +101,11 @@ const SignUp = () => {
                      mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <label className="block text-gray-700">Confirm Password</label>
                   <input
                     type="password"
@@ -89,16 +117,16 @@ const SignUp = () => {
                 focus:bg-white focus:outline-none"
                     required
                   />
-                </div>
-
+                </div> */}
 
                 <button
+                  onClick={signup}
                   type="submit"
                   className="w-full block bg-indigo-500 hover:bg-indigo-400
                    focus:bg-indigo-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
                 >
-                  Log In
+                  SignUp
                 </button>
               </form>
 

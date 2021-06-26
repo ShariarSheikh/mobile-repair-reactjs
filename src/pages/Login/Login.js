@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/pagesStyles/Login.module.css";
 import { FcGoogle } from "react-icons/fc";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { AuthContext } from "../../components/AuthContext/AuthContext";
+import { fireAuth, login } from "../../firebase";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [auth, setAuth] = useContext(AuthContext);
   const history = useHistory();
-    //firebase set up
-    
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
 
-
-
-
-
-
-
-
-
-
-
-
-
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    login();
+  };
+  const login = () => {
+    fireAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential;
+        setAuth({
+          email: user.user.email,
+          uid: user.user.uid,
+          displayName: user.user.displayName,
+          photoURL: user.user.photoURL,
+        });
+        history.replace(from);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
 
   return (
     <div className={styles.Login}>
@@ -36,6 +51,7 @@ const Login = () => {
               </h1>
 
               <form className="mt-6" action="#" method="POST">
+                {error && <p className="form_error">{error}</p>}
                 <div>
                   <label className="block text-gray-700">Email Address</label>
                   <input
@@ -47,6 +63,8 @@ const Login = () => {
                     autoFocus
                     autoComplete="true"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -61,6 +79,8 @@ const Login = () => {
                      mt-2 border focus:border-blue-500
                 focus:bg-white focus:outline-none"
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
 
@@ -75,6 +95,7 @@ const Login = () => {
                 </div>
 
                 <button
+                  onClick={loginHandler}
                   type="submit"
                   className="w-full block bg-indigo-500 hover:bg-indigo-400
                    focus:bg-indigo-400 text-white font-semibold rounded-lg

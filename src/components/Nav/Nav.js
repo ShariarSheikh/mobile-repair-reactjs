@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../../styles/components/nav.module.css";
 import logo from "../../images/lime-274.png";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import { Link, useHistory } from "react-router-dom";
-import { AiOutlineShoppingCart, AiOutlineSearch } from "react-icons/ai";
+import {
+  AiOutlineShoppingCart,
+  AiOutlineSearch,
+  AiFillBell,
+} from "react-icons/ai";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { ServicesList } from "./servicesList/ServicesList";
+import { AuthContext } from "../AuthContext/AuthContext";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const history = useHistory();
+  const [auth, setAuth] = useContext(AuthContext);
 
   const pushToSignup = () => {
     history.push("/signup");
@@ -99,19 +105,41 @@ const Nav = () => {
           <div>
             <AiOutlineShoppingCart className="text-white mr-4 text-2xl cursor-pointer" />
           </div>
-          <div
-            onClick={pushToLogin}
-            className="cursor-pointer flex flex-row items-center text-white font-medium rounded"
-          >
-            <IoPersonCircleOutline className="text-white mr-1 text-lg" />
-            LogIn
-          </div>
-          <div
-            onClick={pushToSignup}
-            className="ml-4 cursor-pointer flex flex-row items-center text-white font-medium rounded outline-none"
-          >
-            Register
-          </div>
+          {auth && auth.email ? (
+            <div className="cursor-pointer flex flex-row items-center text-white font-medium rounded">
+              <AiFillBell className="text-white mr-1 text-lg" />
+            </div>
+          ) : (
+            <div
+              onClick={pushToLogin}
+              className="cursor-pointer flex flex-row items-center text-white font-medium rounded"
+            >
+              <IoPersonCircleOutline className="text-white mr-1 text-lg" />
+              LogIn
+            </div>
+          )}
+          {auth && auth.email ? (
+            <div className="ml-4 cursor-pointer flex flex-row items-center">
+              {auth && auth.photoURL ? (
+                <img
+                  className="inline object-cover w-12 h-12 mr-2 rounded-full"
+                  src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                  alt="Profile image"
+                />
+              ) : (
+                <div onClick={()=> history.push('/profile')} className="overflow-hidden bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center w-12 h-12 mr-2 rounded-full">
+                  <p className="font-bold text-2xl mb-2"> {auth.displayName.substring(0, 1)} </p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div
+              onClick={pushToSignup}
+              className="ml-4 cursor-pointer flex flex-row items-center text-white font-medium rounded outline-none"
+            >
+              Register
+            </div>
+          )}
         </div>
       </div>
       <HamburgerMenu openMenu={openMenu} />
