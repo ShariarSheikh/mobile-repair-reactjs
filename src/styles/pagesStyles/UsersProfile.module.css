@@ -1,0 +1,14 @@
+#UsersProfile {
+  background-color: whitesmoke;
+  overflow: hidden;
+  min-height: 70vh;
+}
+#UsersProfile_container {
+  max-width: 1280px;
+  margin: auto;
+  background-color: white;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  height:auto;
+  border-radius: 10px;
+}
