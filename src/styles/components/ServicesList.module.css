@@ -1,10 +1,4 @@
-#list_container {
-  background-color: #1e40af;
-  width: 100%;
-}
-#list_inner_container {
-  flex-wrap: wrap;
-}
+
 #stylesCard {
   width: 260px;
   height: 100%;

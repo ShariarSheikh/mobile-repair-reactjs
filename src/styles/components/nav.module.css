@@ -100,16 +100,24 @@ nav {
   width: 150px;
   overflow: hidden;
 }
-#services_link {
+#dropdown {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
-#services_link:hover #serviceList_div {
-  display: block;
+#link {
 }
 
-#serviceList_div {
-  display: none;
+#dropdown_menu {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#dropdown > #link:focus + #dropdown_menu {
+  opacity: 1;
+  pointer-events: auto;
 }

@@ -1,47 +1,23 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
-import Nav from "./components/Nav/Nav";
-import Home from "./pages/Home/Home";
-import Stores from "./pages/Stores/Stores";
-import ServicesDynamic from "./pages/ServicesDynamic/ServicesDynamic";
-import Login from "./pages/Login/Login";
-import SignUp from "./pages/SignUp.js/SignUp";
-import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "./components/AuthContext/AuthContext";
-import { fireAuth } from "./firebase";
-import UsersProfile from "./pages/UsersProfile/UsersProfile";
+import Header from "./components/Header/Header";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import useFetch from "./hooks/useFetch";
+import DeviceRepairDetails from "./pages/DeviceRepairDetails/DeviceRepairDetails";
 import Error from "./pages/Error/Error";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Services from "./pages/Services/Services";
+import SignUp from "./pages/SignUp.js/SignUp";
+import Stores from "./pages/Stores/Stores";
+import UsersProfile from "./pages/UsersProfile/UsersProfile";
 
 const App = () => {
-  const [auth, setAuth] = useContext(AuthContext);
-
-  useEffect(() => {
-    fireAuth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        setAuth({
-          email: userAuth.email,
-          uid: userAuth.uid,
-          displayName: userAuth.displayName,
-          photoURL: userAuth.photoURL,
-        });
-      } else {
-        fireAuth
-          .signOut()
-          .then(() => {
-            // Sign-out successful.
-          })
-          .catch((error) => {
-            // An error happened.
-          });
-      }
-    });
-  }, []);
 
   return (
     <>
       <Router>
-        <Nav />
+        <Header />
         <div className="App">
           <Switch>
             <Route exact path="/">
@@ -51,24 +27,26 @@ const App = () => {
               <Stores />
             </Route>
             <Route path="/services/:device">
-              <ServicesDynamic />
+              <Services />
             </Route>
-            {auth && auth.email && (
-              <PrivateRoute path="/profile">
-                <UsersProfile />
-              </PrivateRoute>
-            )}
-            {auth && !auth.email && (
-              <>
-                <Route path="/login">
-                  <Login />
-                </Route>
-                <Route path="/signup">
-                  <SignUp />
-                </Route>
-              </>
-            )}
-            <Route>
+            <Route path="/devicereapir/:devicename">
+              <DeviceRepairDetails />
+            </Route>
+
+            <PrivateRoute path="/profile">
+              <UsersProfile />
+            </PrivateRoute>
+
+            <>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/signup">
+                <SignUp />
+              </Route>
+            </>
+
+            <Route path="*">
               <Error />
             </Route>
           </Switch>

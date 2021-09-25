@@ -1,15 +1,14 @@
+import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../AuthContext/AuthContext";
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const [auth, setAuth] = useContext(AuthContext);
+const {user} = useSelector((state) => state.user)
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        auth && auth.email ? (
+        user.email  ? (
           children
         ) : (
           <Redirect

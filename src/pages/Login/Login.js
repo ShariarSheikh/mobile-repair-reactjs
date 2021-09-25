@@ -1,38 +1,69 @@
-import React, { useContext, useState } from "react";
-import styles from "../../styles/pagesStyles/Login.module.css";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { AuthContext } from "../../components/AuthContext/AuthContext";
-import { fireAuth, login } from "../../firebase";
+import { getUser } from "../../redux/userSlice/userSlice";
+import styles from "../../styles/pagesStyles/Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [auth, setAuth] = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
   const history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
 
-  const loginHandler = async (e) => {
+  const loginHandler = (e) => {
     e.preventDefault();
-    login();
-  };
-  const login = () => {
-    fireAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential;
-        setAuth({
-          email: user.user.email,
-          uid: user.user.uid,
-          displayName: user.user.displayName,
-          photoURL: user.user.photoURL,
-        });
+
+    setLoading(true);
+    const user = {
+      email,
+      password,
+    };
+
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    };
+
+    fetch("https://stormy-woodland-67379.herokuapp.com/auth/user/login", config)
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        fetchUserData();
         history.replace(from);
       })
       .catch((err) => {
         setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const fetchUserData = () => {
+    const url = "https://stormy-woodland-67379.herokuapp.com/auth/user/profile";
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    fetch(url, config)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(getUser(data.user));
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -42,7 +73,7 @@ const Login = () => {
         <section className="flex flex-row h-screen items-center">
           <div
             className="bg-white w-full md:max-w-md lg:max-w-full
-             md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+             md:mx-auto  md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
         flex items-center justify-center"
           >
             <div className="w-full h-100">
@@ -50,8 +81,8 @@ const Login = () => {
                 Log in to your account
               </h1>
 
-              <form className="mt-6" action="#" method="POST">
-                {error && <p className="form_error">{error}</p>}
+              <form className="mt-6" onSubmit={loginHandler}>
+                {error && <p className="text-red-500">{error}</p>}
                 <div>
                   <label className="block text-gray-700">Email Address</label>
                   <input
@@ -85,23 +116,23 @@ const Login = () => {
                 </div>
 
                 <div className="text-right mt-2">
-                  <a
+                  <button
                     href="#"
                     className="text-sm font-semibold text-gray-700
                      hover:text-blue-700 focus:text-blue-700"
                   >
                     Forgot Password?
-                  </a>
+                  </button>
                 </div>
 
                 <button
-                  onClick={loginHandler}
                   type="submit"
                   className="w-full block bg-indigo-500 hover:bg-indigo-400
                    focus:bg-indigo-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
+                  disabled={loading ? true : false}
                 >
-                  Log In
+                  {loading ? "Loading..." : "Login"}
                 </button>
               </form>
 

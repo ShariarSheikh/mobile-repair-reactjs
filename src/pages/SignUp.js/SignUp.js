@@ -1,16 +1,17 @@
-import React, { useContext, useState } from "react";
-import styles from "../../styles/pagesStyles/SignUp.module.css";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-import { fireAuth } from "../../firebase";
-import { AuthContext } from "../../components/AuthContext/AuthContext";
+import { getUser } from "../../redux/userSlice/userSlice";
+import styles from "../../styles/pagesStyles/SignUp.module.css";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const history = useHistory();
   let location = useLocation();
@@ -18,29 +19,53 @@ const SignUp = () => {
 
   const signup = async (e) => {
     e.preventDefault();
-    register();
-  };
-  const register =  () => {
-    fireAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userAuth) => {
-        userAuth.user
-          .updateProfile({
-            displayName: name,
-            photoURL: "",
-          })
-          .then(() => {
-            setAuth({
-              email: userAuth.user.email,
-              uid: userAuth.user.uid,
-              displayName: name,
-              photoURL: "",
-            });
-            history.replace(from);
-          });
+    setLoading(true);
+    const user = {
+      name,
+      email,
+      password,
+    };
+
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    };
+
+    fetch(
+      "https://stormy-woodland-67379.herokuapp.com/auth/user/register",
+      config
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        fetchUserData();
+        history.replace(from);
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err);
+      });
+    setLoading(false);
+  };
+
+  const fetchUserData = () => {
+    const url = "https://stormy-woodland-67379.herokuapp.com/auth/user/profile";
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    fetch(url, config)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(getUser(data.user));
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -50,7 +75,7 @@ const SignUp = () => {
         <section className="flex flex-row h-screen items-center">
           <div
             className="bg-white w-full md:max-w-md lg:max-w-full
-             md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+             md:mx-auto  md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
         flex items-center justify-center"
           >
             <div className="w-full h-100">
@@ -58,7 +83,7 @@ const SignUp = () => {
                 Create Account
               </h1>
 
-              <form className="mt-6" action="#" method="POST">
+              <form className="mt-6" onSubmit={signup}>
                 {error && <p className="form_error">{error}</p>}
 
                 <div>
@@ -105,28 +130,15 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                {/* <div className="mt-4">
-                  <label className="block text-gray-700">Confirm Password</label>
-                  <input
-                    type="password"
-                    name=""
-                    placeholder="Confirm Password"
-                    minLength="6"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-200
-                     mt-2 border focus:border-blue-500
-                focus:bg-white focus:outline-none"
-                    required
-                  />
-                </div> */}
 
                 <button
-                  onClick={signup}
                   type="submit"
                   className="w-full block bg-indigo-500 hover:bg-indigo-400
                    focus:bg-indigo-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
+                  disabled={loading ? true : false}
                 >
-                  SignUp
+                  {loading ? "Loading..." : "SignUp"}
                 </button>
               </form>
 
@@ -147,13 +159,13 @@ const SignUp = () => {
               </button>
 
               <p className="mt-8">
-                Already have an account?{" "}
-                <a
+                Already have an account?
+                <span
                   onClick={() => history.push("/login")}
-                  className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer"
+                  className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer ml-2"
                 >
                   LogIn
-                </a>
+                </span>
               </p>
             </div>
           </div>

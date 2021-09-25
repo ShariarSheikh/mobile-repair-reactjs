@@ -1,32 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { allDevice } from "../../products";
 import styles from "../../styles/pagesStyles/ServicesDynamic.module.css";
-import { appleDevices, redmiDevices, samsungDevices } from "../../products";
-import { useParams } from "react-router-dom";
-import headerBg from '../../images/repairBgHeader.jpg';
 
-const ServicesDynamic = () => {
-  const [productData, setProductData] = useState();
+const Services = () => {
+  const [deviceData, setDeviceData] = useState([]);
   const { device } = useParams();
-  const appleData = appleDevices;
-  const samsungData = samsungDevices;
-  const redmiData = redmiDevices;
+  const history = useHistory();
 
   useEffect(() => {
-    if (device === "Apple") {
-      setProductData(appleData);
-    } else if (device === "Samsung") {
-      setProductData(samsungData);
-    } else if (device === "Redmi") {
-      setProductData(redmiData);
-    } else if (device === "Nokia") {
-      setProductData(redmiData);
-    } else if (device === "Huawei") {
-      setProductData(redmiData);
-    } else if (device === "Asus") {
-      setProductData(redmiData);
-    } else {
-      setProductData();
-    }
+    const data = allDevice.filter((pd) => pd.category === device);
+    setDeviceData(data);
   }, [device]);
 
   return (
@@ -54,13 +38,18 @@ const ServicesDynamic = () => {
         {/* device container */}
         <div className={styles.device_container}>
           <div className="flex flex-row flex-wrap justify-center mt-10">
-            {productData?.map((data) => (
+            {deviceData?.map((data) => (
               <div
+                onClick={() => history.push(`/devicereapir/${data.id}`)}
                 id={styles.Product_card}
                 className="flex flex-col cursor-pointer"
                 key={data.id}
               >
-                <img id={styles.Product_card_img} src={data.photo} alt="" />
+                <img
+                  id={styles.Product_card_img}
+                  src={data.photo}
+                  alt="product"
+                />
                 <p className="mt-3 text-gray-600">{data.name}</p>
               </div>
             ))}
@@ -71,4 +60,4 @@ const ServicesDynamic = () => {
   );
 };
 
-export default ServicesDynamic;
+export default Services;
