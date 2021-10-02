@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import useFetch from "./hooks/useFetch";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
 import DeviceRepairDetails from "./pages/DeviceRepairDetails/DeviceRepairDetails";
 import Error from "./pages/Error/Error";
 import Home from "./pages/Home/Home";
@@ -13,46 +13,23 @@ import Stores from "./pages/Stores/Stores";
 import UsersProfile from "./pages/UsersProfile/UsersProfile";
 
 const App = () => {
-
   return (
     <>
-      <Router>
-        <Header />
-        <div className="App">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/stores">
-              <Stores />
-            </Route>
-            <Route path="/services/:device">
-              <Services />
-            </Route>
-            <Route path="/devicereapir/:devicename">
-              <DeviceRepairDetails />
-            </Route>
+      <Header />
+      <>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/stores" component={Stores} />
+          <Route exact path="/services/:device" component={Services} />
+          <Route exact path="/device" component={DeviceRepairDetails} />
+          <PrivateRoute exact path="/profile" component={UsersProfile} />
 
-            <PrivateRoute path="/profile">
-              <UsersProfile />
-            </PrivateRoute>
-
-            <>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/signup">
-                <SignUp />
-              </Route>
-            </>
-
-            <Route path="*">
-              <Error />
-            </Route>
-          </Switch>
-        </div>
-        <Footer />
-      </Router>
+          <PublicRoute exact path="/login" component={Login} />
+          <PublicRoute exact path="/signup" component={SignUp} />
+          <Route path="*" component={Error} />
+        </Switch>
+      </>
+      <Footer />
     </>
   );
 };

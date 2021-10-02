@@ -1,23 +1,20 @@
 import React from "react";
-import styles from "../../styles/components/Footer.module.css";
 import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
 const Footer = () => {
   const location = useLocation();
-
   return (
-    <div className={styles.Footer}>
+    <div className="w-full h-auto bg-indigo-900">
       <div
-        id={styles.footer_container}
-        className={`flex flex-col ${
+        className={`flex flex-col max-w-5xl w-full m-auto h-auto pt-12 ${
           location.pathname === "/login" || location.pathname === "/signup"
             ? `hidden`
             : `block`
         }`}
       >
         {/* all links container start */}
-        <div className="flex flex-row justify-between ">
+        <div className="flex flex-row justify-between flex-wrap px-3">
           {/* container 1 start */}
           <div>
             <div className="mb-4">
@@ -83,27 +80,27 @@ const Footer = () => {
             <ul className="p-0 text-right flex flex-row">
               <li className="text-sm  mb-2 mr-3">
                 <a
-                  href=""
-                  id={styles.iconIdentify_f}
-                  className={styles.Footer_social_icon}
+                  href="https://devex.vercel.app/"
+                  id="iconIdentify_f"
+                  className="text-white rounded w-9 h-9 leading-9 flex justify-center items-center list-none "
                 >
                   <FaFacebookF />
                 </a>
               </li>
               <li className="text-sm  mb-2 mr-3">
                 <a
-                  href=""
-                  id={styles.iconIdentify_t}
-                  className={styles.Footer_social_icon}
+                  href="https://devex.vercel.app/"
+                  id="iconIdentify_t"
+                  className="text-white rounded w-9 h-9 leading-9 flex justify-center items-center list-none "
                 >
                   <FaTwitter />
                 </a>
               </li>
               <li className="text-sm  mb-2">
                 <a
-                  href=""
-                  id={styles.iconIdentify_y}
-                  className={styles.Footer_social_icon}
+                  href="https://devex.vercel.app/"
+                  id="iconIdentify_y"
+                  className="text-white rounded w-9 h-9 leading-9 flex justify-center items-center list-none "
                 >
                   <FaYoutube />
                 </a>
@@ -114,10 +111,7 @@ const Footer = () => {
         </div>
         {/* all links container end */}
         {/* join container start */}
-        <div
-          id={styles.Footer_email_send_container}
-          className="flex w-full justify-center flex-col "
-        >
+        <div className="max-w-xs m-auto pb-4 self-start relative flex w-full justify-center flex-col mt-12">
           <div>
             <h1 className="text-gray-100 text-2xl mb-3 ">
               Subscribe to our newsletter

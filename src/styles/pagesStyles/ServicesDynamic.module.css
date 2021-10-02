@@ -10,20 +10,7 @@
   flex-direction: column;
   margin-bottom: 80px;
 }
-#ServicesDynamic_header {
-  background-image: url(`../../../../images/repairBgHeader.jpg);
-  width: 100%;
-  height: 350px;
-  background-color: whitesmoke;
-  padding: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
+
 .device_container {
   width: 100%;
 }

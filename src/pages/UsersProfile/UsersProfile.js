@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { getUser } from "../../redux/userSlice/userSlice";
+import Error from "../Error/Error";
 import DashboardHome from "./components/DashboardHome";
 import DashboardSidebar from "./components/DashboardSidebar";
 import Setting from "./components/Setting";
@@ -52,8 +53,7 @@ const UsersProfile = () => {
             <Route exact path="/profile">
               <DashboardHome user={user} />
             </Route>
-
-            <Route path="/profile/setting">
+            <Route exact path="/profile/setting">
               <Setting />
             </Route>
           </Switch>

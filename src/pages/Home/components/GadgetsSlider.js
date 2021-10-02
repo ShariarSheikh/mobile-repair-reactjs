@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -34,11 +34,11 @@ const GadgetsSlider = ({ gadgets }) => {
           },
           "@0.75": {
             "slidesPerView": 2,
-            "spaceBetween": 20
+            "spaceBetween": 10
           },
           "@1.00": {
             "slidesPerView": 3,
-            "spaceBetween": 40
+            "spaceBetween": 10
           },
           "@1.50": {
             "slidesPerView": 4,
@@ -51,18 +51,16 @@ const GadgetsSlider = ({ gadgets }) => {
           <SwiperSlide id={styles.gadgetsCart} key={gd.id}>
             <div className="h-full w-full bg-white flex flex-col bg-transparent border items-center justify-center p-5">
               <img
-                className="h-4/5 bg-white"
-                id={styles.gadgetsImg}
+                className="bg-white h-52 w-80 object-contain"
                 src={gd.photo}
                 alt="imgslider"
               />
               <div className=" w-full h-1/5">
-                <h1 className="truncate  w-full text-sm text-start font-normal mt-3 text-gray-600 line-clamp-2">
-                  {gd.title}
+                <h1 className="truncate  w-full text-sm text-start font-normal mt-3 text-gray-600 line-clamp-1">
+                  {gd.name}
                 </h1>
                 <p className="text-gray-500 overflow-ellipsis ">
-                  {" "}
-                  <strong> {gd.price}$ </strong>{" "}
+                  <strong> {gd.price}$ </strong>
                 </p>
                 <div className="flex">
                   {Array(rating)

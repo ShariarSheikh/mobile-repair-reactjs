@@ -1,104 +1,55 @@
-import React from "react";
-import styles from "../../../styles/components/BrandsWeRepair.module.css";
-import personRepairing from "../../../images/personRepairing.webp";
-
-import apple from "../../../images/apple.jpg";
-import asus from "../../../images/asus.jpg";
-import google from "../../../images/google.jpg";
-import honor from "../../../images/honor.jpg";
-import huawei from "../../../images/huawei.jpg";
-import lenovo from "../../../images/lenovo.jpg";
-import mi from "../../../images/mi.jpg";
-import motorola from "../../../images/motorola.jpg";
-import nokia from "../../../images/nokia.jpg";
-import oneplus from "../../../images/oneplus.jpg";
-import oppo from "../../../images/oppo.jpg";
-import poco from "../../../images/poco.jpg";
-import realme from "../../../images/realme.jpg";
-import samsung from "../../../images/samsung.jpg";
-
-const allBrands = [
-  {
-    id: 1,
-    photo: apple,
-  },
-  {
-    id: 2,
-    photo: samsung,
-  },
-  {
-    id: 3,
-    photo: asus,
-  },
-  {
-    id: 4,
-    photo: realme,
-  },
-  {
-    id: 5,
-    photo: apple,
-  },
-  {
-    id: 6,
-    photo: google,
-  },
-  {
-    id: 7,
-    photo: honor,
-  },
-  {
-    id: 8,
-    photo: huawei,
-  },
-  {
-    id: 9,
-    photo: lenovo,
-  },
-  {
-    id: 10,
-    photo: mi,
-  },
-  {
-    id: 11,
-    photo: motorola,
-  },
-  {
-    id: 12,
-    photo: nokia,
-  },
-  {
-    id: 13,
-    photo: oneplus,
-  },
-  {
-    id: 14,
-    photo: oppo,
-  },
-  {
-    id: 15,
-    photo: poco,
-  },
-];
+import React, { useState } from "react";
+import { useHistory } from "react-router";
+import { allBrands } from "../../../products";
 
 const BrandsWeRepair = () => {
+  const [searchBrand, setSearchBrand] = useState("");
+
+  const history = useHistory();
+
+  const searchDevice = () => {
+    history.push(`/services/${searchBrand}`);
+  };
+
   return (
-    <div>
-      <div className={styles.BrandsWeRepair}>
-        <div className={styles.BrandsWeRepair_first_div}>
-          <h1 className="text-3xl font-bold mb-4 text-gray-500">
-            Brands We Repair
-          </h1>
-          <img src={personRepairing} alt="personRepairing" />
+    <div id="ourServices" className="w-full 2xl:max-w-7xl xl:max-w-7xl mt-5 px-6 2xl:px-0 lg:w-full flex-col bg-white m-auto flex 2xl:flex-row items-center shadow-sm rounded-md 2xl:bg-indigo-100">
+      {/* left side */}
+      <div className="2xl:w-2/4 w-full 2xl:h-96 h-52 relative flex items-center justify-center flex-col self-center">
+        <img
+          className="absolute top-0 bottom-0 w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1576613109753-27804de2cba8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+          alt="personRepairing"
+        />
+        <div className="flex items-center justify-center 4 z-30 w-full px-8">
+          <input
+            className="outline-none py-4 px-3 rounded-sm text-xl"
+            type="text"
+            placeholder="Search Your Device"
+            value={searchBrand}
+            onChange={(e) => setSearchBrand(e.target.value)}
+          />
+          <button
+            className="bg-blue-600 text-white text-xl h-full w-28 rounded-sm"
+            onClick={searchDevice}
+          >
+            Find
+          </button>
         </div>
-        <div className="flex flex-row flex-wrap self-center">
+      </div>
+
+      {/* right site  */}
+      <div className="w-full 2xl:w-auto 2xl:pl-9 pl-2 py-4 ">
+        <h1 className="z-20 text-3xl font-bold mb-4 text ">Brands We Repair</h1>
+        <div className="flex flex-row flex-wrap self-center pt-4">
           {allBrands.slice(0, 10).map((brands) => (
-            <div key={brands.id} className="bg-white ml-4 mb-4 rounded-sm cursor-pointer">
+            <div
+              onClick={() => history.push(`/services/${brands.category}`)}
+              key={brands.id}
+              className="bg-white ml-4 mb-4 rounded-sm cursor-pointer"
+            >
               <img width="100" src={brands.photo} alt="brands" />
             </div>
           ))}
-          <div style={{width:"100px",height:"100px",display:"flex"}} className="justify-center items-center">
-            <p className="underline text-gray-700 cursor-pointer">More</p>
-          </div>
         </div>
       </div>
     </div>

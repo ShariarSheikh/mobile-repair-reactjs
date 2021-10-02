@@ -11,16 +11,13 @@ const Home = () => {
 
 
   return (
-    <div className="relative">
+    <div>
       <HeroTop />
       <BrandsWeRepair />
       <Services/>
       <Ourgadgets/>
       <WhyUs/>
       <UsersReview/>
-        <br />
-        <br />
-        <br />
     </div>
   );
 };

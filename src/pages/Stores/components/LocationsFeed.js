@@ -1,11 +1,9 @@
 import React from "react";
-
-import styles from "../../../styles/components/Locations.module.css";
-
 import dhaka from "../../../images/locations/dhakaLocation.jpg";
 import kishoreganj from "../../../images/locations/kishoreganj.jpg";
 import kumilla from "../../../images/locations/kumilla.jpg";
 import sylhet from "../../../images/locations/sylhet.jpg";
+import { StoreCart } from "../../../utils/Carts/Index";
 
 const locations = [
   {
@@ -80,37 +78,17 @@ const locations = [
   },
 ];
 
-export const Store = ({ location }) => {
-  return (
-    <>
-      <div
-        key={location.id}
-        id={styles.location_card}
-        className="w-1/4 mr-4 mb-4 cursor-pointer rounded"
-      >
-        <img id={styles.locationImg} src={location.photo} alt="locations" />
-        <div className="absolute bottom-0 bg-gradient-to-t from-black via-gray-900 to-transparent left-0 w-full h-full flex flex-col items-start justify-end pr-4 pl-4" />
-        <div className="absolute bottom-4 pl-3">
-          <h1 className="text-white text-3xl mb-4">{location.location}</h1>
-          <p className="text-gray-200 text-sm mb-16 font-normal">
-            {location.description}
-          </p>
-        </div>
-      </div>
-    </>
-  );
-};
 
-const Locations = () => {
+const LocationsFeed = () => {
   return (
-    <div id={styles.Locations}>
-      <div className="w-full flex flex-wrap justify-center">
+    <div className="max-w-7xl m-auto">
+      <div className="mt-16 w-full flex flex-wrap justify-center md:justify-start">
         {locations.map((loc) => (
-          <Store key={loc.id} location={loc} />
+          <StoreCart key={loc.id} location={loc} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Locations;
+export default LocationsFeed;

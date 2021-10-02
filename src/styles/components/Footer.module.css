@@ -1,4 +1,4 @@
-.Footer {
+/* .Footer {
   width: 100%;
   height: auto;
   background-color: #08192b;
@@ -8,7 +8,7 @@
   margin: auto;
   min-height: 500px;
   padding-top: 50px;
-}
+} */
 .Footer_social_icon {
   color: #fff;
   border-radius: 3px;
@@ -21,15 +21,7 @@
   justify-content: center;
   align-items: center;
 }
-#iconIdentify_f {
-  background-color: #3b5998;
-}
-#iconIdentify_t {
-  background-color: #55acee;
-}
-#iconIdentify_y {
-  background-color: #b00;
-}
+
 #Footer_email_send_container {
   margin-top: 50px;
   position: relative;

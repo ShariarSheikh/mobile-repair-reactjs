@@ -1,13 +1,11 @@
 import React from "react";
-import styles from "../../../styles/components/Services.module.css";
-
+import camera from "../../../images/camera.png";
+import desktop from "../../../images/desktop.png";
+import mac from "../../../images/laptop.png";
 // totalServicesList img
 import phone from "../../../images/mobile.png";
-import mac from "../../../images/laptop.png";
-import desktop from "../../../images/desktop.png";
-import tablet from "../../../images/tablet.png";
-import camera from "../../../images/camera.png";
 import pcLaptop from "../../../images/pcLaptop.png";
+import tablet from "../../../images/tablet.png";
 
 const totalServicesList = [
   {
@@ -54,48 +52,25 @@ const totalServicesList = [
   },
 ];
 
-// export const Item = ({ serviceItem }) => {
-//   const { photo, title, description } = serviceItem;
-//   return (
-//     <>
-//       <div className={styles.item}>
-//         <img
-//           id={styles.itemsImg}
-//           className="w-full h-full"
-//           src={photo}
-//           alt="services"
-//         />
-//         <div className="absolute bottom-0 bg-gradient-to-t from-black via-gray-900 to-transparent left-0 w-full h-full flex flex-col items-start justify-end pr-4 pl-4">
-//           <h2 className="text-white text-3xl mb-4">{title}</h2>
-//           <p className="text-gray-200 text-sm mb-16 font-normal">
-//             {description}
-//           </p>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
 const Services = () => {
   return (
-    <div className={styles.services_components}>
-      <h1 className="text-3xl text-start font-bold mb-5 text-blue-300">
+    <div className="w-full 2xl:max-w-7xl xl:max-w-7xl px-6 2xl:px-0 lg:w-full m-auto mt-10 flex flex-col items-start">
+      <h1 className="text-2xl text-start font-bold mb-5 text-blue-500">
         Services
       </h1>
-      <div className="flex flex-row flex-wrap">
+      <div className="w-full flex flex-row justify-start flex-wrap">
         {totalServicesList.map((sr) => (
-          <div key={sr.id} className={styles.serviceCard}>
+          <div key={sr.id} className="p-5 shadow-md max-w-md sm:w-1/3  w-full mb-5 hover:shadow-sm">
             <div>
-              <p className="text-start text-gray-800  text-xl mb-2 text-gray-800 font-medium">
+              <p className="text-start text-gray-800  text-xl mb-2 font-medium ">
                 {sr.title}
               </p>
-              <p className="text-start text-gray-800 text-sm font-normal">
+              <p className="text-start text-gray-800 font-normal">
                 {sr.description}
               </p>
             </div>
           </div>
         ))}
-        
       </div>
     </div>
   );

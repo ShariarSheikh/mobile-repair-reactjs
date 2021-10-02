@@ -1,17 +1,19 @@
 import React from "react";
-import styles from "../../styles/pagesStyles/Stores.module.css";
+import { useLocation } from "react-router";
+import LocationsFeed from "./components/LocationsFeed";
 import StoresHero from "./components/StoresHero";
-import Location from "./components/Locations";
-
 
 const Stores = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const store = searchParams.get("store");
+
+  
+
   return (
-    <div className={styles.Stores}>
+    <div className="relative w-full bg-gradient-to-t from-black via-blue-900 to-transparent pb-11">
       <StoresHero />
-      <Location/>
-      <br />
-      <br />
-      <br />
+      <LocationsFeed/>
     </div>
   );
 };

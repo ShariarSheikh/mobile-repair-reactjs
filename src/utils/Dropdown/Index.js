@@ -6,38 +6,45 @@ import { removeUser } from "../../redux/userSlice/userSlice";
 const totalServicesList = [
   {
     id: 1,
-    device: "apple",
+    device: "Apple",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "apple",
   },
   {
     id: 2,
-    device: "samsung",
+    device: "Samsung",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "samsung",
   },
   {
     id: 3,
-    device: "redmi",
+    device: "Redmi",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "redmi",
   },
   {
     id: 4,
     device: "Nokia",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "nokia",
   },
   {
     id: 5,
     device: "Huawei",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "huawei",
   },
   {
     id: 6,
     device: "Asus",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "asus",
   },
   {
     id: 7,
-    device: "More",
+    device: "Tools",
     description: "lorem ipsum dolor lorem ipsum",
+    category: "tools",
   },
 ];
 
@@ -47,7 +54,14 @@ export const DropdownServices = ({ setDropdown }) => {
       <div className="z-50 absolute max-w-7xl top-11 mt-9 left-0 rounded bg-blue-800 w-full ">
         <div className="w-full flex flex-row justify-start flex-wrap items-center rounded">
           {totalServicesList.map((service) => (
-            <Link to={`/services/` + service.device} key={service.id}>
+            <Link
+              to={
+                service.category === "tools"
+                  ? `/gadgets/` + service.category
+                  : `/services/` + service.category
+              }
+              key={service.id}
+            >
               <div
                 className="flex flex-col items-center justify-center w-64 h-full p-6 relative hover:bg-blue-700"
                 onClick={() => setDropdown((prevState) => !prevState)}
@@ -89,7 +103,7 @@ export const DropdownProfileMenu = ({ img }) => {
   };
   return (
     <div
-      className="text-white relative z-50"
+      className="text-white relative z-50 "
       onClick={() => setIsOpenMenu(!isOpenMenu)}
       ref={menuRef}
       onBlur={() => setIsOpenMenu(false)}
@@ -101,7 +115,7 @@ export const DropdownProfileMenu = ({ img }) => {
         alt="Profile"
       />
       <ul
-        className="text-black absolute right-0 top-14 shadow-md bg-white pt-2 px-3"
+        className="w-52 rounded-sm text-black absolute right-0 top-14 shadow-lg bg-white pt-2 px-3"
         hidden={!isOpenMenu}
         onClick={(e) => e.stopPropagation()}
       >
@@ -115,6 +129,47 @@ export const DropdownProfileMenu = ({ img }) => {
           Logout
         </li>
       </ul>
+    </div>
+  );
+};
+
+export const DropdownCart = ({ AiOutlineShoppingCart }) => {
+  const history = useHistory();
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const menuRef = useRef(null);
+  useEffect(() => {
+    isOpenMenu && menuRef.current.focus();
+  }, [isOpenMenu]);
+
+  const clickHandler = (text) => {
+    history.push("/gadgets/tools");
+    setIsOpenMenu(false);
+  };
+  return (
+    <div
+      className="text-white relative z-50"
+      onClick={() => setIsOpenMenu(!isOpenMenu)}
+      ref={menuRef}
+      onBlur={() => setIsOpenMenu(false)}
+      tabIndex={0}
+    >
+      <AiOutlineShoppingCart className="text-white mr-4 text-2xl cursor-pointer" />
+      <div
+        className="w-72 h-52  rounded-sm text-black absolute right-0 top-14 shadow-xl bg-white pt-2 px-3"
+        hidden={!isOpenMenu}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="w-full h-full flex items-center justify-center flex-col">
+          <p>Looks like your cart is empty</p>
+          <h4
+            className="text-indigo-500 mt-8 cursor-pointer"
+            onClick={clickHandler}
+          >
+            Browse our store
+          </h4>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,37 +1,30 @@
 import React from "react";
-import headerBg from "../../../images/headerBg.png"
-import styles from "../../../styles/components/HeroTop.module.css";
+import headerBg from "../../../images/headerBg.png";
 
 const HeroTop = () => {
   return (
-    <div className={styles.home_hero}>
-      <div
-        className="flex flex-col lg:flex-row-reverse justify-around"
-        id={styles.homeHeader}
-      >
-        <div className="overflow-hidden lg:w-2/5 relative w-full flex justify-center items-center">
-          <div id={styles.img_container}>
-            <img
-              id={styles.headerImg}
-              className="w-full"
-              src={headerBg}
-              alt="headerBg"
-            />
+    <div id="bg_img" className="relative w-full pb-7 xl:pb-0">
+      <div className="w-full xl:max-w-7xl lg:w-full m-auto flex flex-col sm:flex-row-reverse justify-around sm:py-8 lg:py-0">
+        {/* img component */}
+        <div className="relative overflow-hidden sm:w-2/5 xl:w-2/6 w-full  m-auto flex justify-center items-center">
+          <div id="img_bounce" className="w-full">
+            <img className="w-full h-full" src={headerBg} alt="headerBg" />
           </div>
         </div>
-        <div className="lg:w-3/5 relative w-full flex justify-center items-center flex-col">
+        {/* text component */}
+        <div className="lg:w-3/5 sm:w-6/12 relative w-full flex 3xl:items-start justify-center items-center flex-col px-4">
           <div>
-            <h1 className="font-bold text-gray-50 text-6xl">
+            <h1 className="text-gray-50 xl:text-5xl text-4xl font-bold">
               We are the largest mobile
-              <br /> repairing team in
-              <br /> Bangladesh
+              <br className="hidden"/> repairing team in
+              <br className="hidden"/> Bangladesh
             </h1>
-            <p className="text-gray-200 text-xl mt-9 font-normal">
-              It is a long established fact that a reader <br /> will be
+            <p className="text-gray-200 lg:text-lg text-sm  mt-9 font-normal">
+              It is a long established fact that a reader <br className="sm:block hidden"/> will be
               distracted by the readable content of.
             </p>
             <button className="border border-indigo-600 text-white font-medium mt-6 pr-6 pl-6 pt-3 pb-3 rounded outline-none">
-              Ours Services
+              <a href="#ourServices">Ours Services</a>
             </button>
           </div>
         </div>
