@@ -13,7 +13,6 @@ const Services = () => {
   useEffect(() => {
     const data = allDevice.filter((pd) => pd.category === device);
     setDeviceData(data);
-
   }, [device]);
 
   const findDevice = (e) => {
@@ -25,8 +24,8 @@ const Services = () => {
       <div className="w-full flex flex-col mb-20">
         <div id="services_page_bg_img">
           <div className="flex flex-col items-center justify-start">
-            <h1 className="text-4xl text-start font-normal text-white">
-              {device} Repair
+            <h1 className="text-4xl text-start font-normal text-white p-3 bg-opacity-60 bg-black">
+              {device} device we repair
             </h1>
             <div className="flex items-center mt-20 bg-white rounded pr-3 pl-3 pt-3 pb-5">
               <input
@@ -70,9 +69,15 @@ const Services = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full flex justify-center items-center h-96">
+          <div className="w-full flex flex-col justify-center items-center h-96">
+            <img
+              className="h-72 object-contain w-80"
+              src="https://cdn.dribbble.com/users/1218631/screenshots/3818393/media/2907281eae03fac6e9f5b99ad597bf13.gif"
+              alt="not found location"
+            />
             <h1 className="text-3xl">
-              We don't repair <span className="text-blue-500">{device}</span>
+              OHHH... sorry we don't repair{" "}
+              <span className="text-blue-500">{device}</span>
             </h1>
           </div>
         )}

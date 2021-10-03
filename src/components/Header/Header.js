@@ -22,7 +22,7 @@ const Header = () => {
   const history = useHistory();
 
   return (
-    <nav className="z-40 w-full h-20 nav_bg sticky top-0" id="#">
+    <nav className="z-50 w-full h-20 nav_bg sticky top-0" id="#">
       <div className="w-full 3xl:w-2xl 2xl:w-2xl 2xl:px-5 px-5  lg:w-full m-auto relative h-full flex justify-between flex-row items-center">
         {/* header left start component(logo) */}
         <HeaderLeft
@@ -126,7 +126,7 @@ const HeaderRight = () => {
 
   const storeSearch = (e) => {
     if (e.keyCode === 13) {
-      history.push(`/stores?store=${search}`);
+      search && history.push(`/stores?store=${search}`);
     }
   };
   return (

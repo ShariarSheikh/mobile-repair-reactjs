@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { AiFillStar, AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 export const StoreCart = ({ location }) => {
+  const history = useHistory();
   return (
-    <>
       <div
+        onClick={() => history.push(`/store/${location.location}`)}
         key={location.id}
         className="relative bg-blue-500 shadow-md pb-3 w-96 mr-4 mb-6 cursor-pointer rounded"
       >
@@ -16,7 +18,6 @@ export const StoreCart = ({ location }) => {
           </p>
         </div>
       </div>
-    </>
   );
 };
 

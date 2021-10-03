@@ -1,3 +1,28 @@
+import apple from "../src/images/apple.jpg";
+import asus from "../src/images/asus.jpg";
+//gadgets img imported
+import img1 from "../src/images/gadgets/img1.jpg";
+import img2 from "../src/images/gadgets/img2.jpg";
+import img3 from "../src/images/gadgets/img3.jpg";
+import img4 from "../src/images/gadgets/img4.jpg";
+import img5 from "../src/images/gadgets/img5.jpg";
+import img6 from "../src/images/gadgets/img6.jpg";
+import img7 from "../src/images/gadgets/img7.jpg";
+import img8 from "../src/images/gadgets/img8.jpg";
+import img9 from "../src/images/gadgets/img9.jpg";
+import google from "../src/images/google.jpg";
+import honor from "../src/images/honor.jpg";
+import huawei from "../src/images/huawei.jpg";
+import lenovo from "../src/images/lenovo.jpg";
+//all device img logo
+import mi from "../src/images/mi.jpg";
+import motorola from "../src/images/motorola.jpg";
+import nokia from "../src/images/nokia.jpg";
+import oneplus from "../src/images/oneplus.jpg";
+import oppo from "../src/images/oppo.jpg";
+import poco from "../src/images/poco.jpg";
+import realme from "../src/images/realme.jpg";
+import samsung from "../src/images/samsung.jpg";
 // apple img imported
 import apple1 from "./images/apple/apple1.jpg";
 import apple10 from "./images/apple/apple10.png";
@@ -36,33 +61,6 @@ import samsung6 from "./images/samsung/sam6.png";
 import samsung7 from "./images/samsung/sam7.jpg";
 import samsung8 from "./images/samsung/sam8.jpg";
 import samsung9 from "./images/samsung/sam9.png";
-
-//gadgets img imported
-import img1 from "../src/images/gadgets/img1.jpg";
-import img2 from "../src/images/gadgets/img2.jpg";
-import img3 from "../src/images/gadgets/img3.jpg";
-import img4 from "../src/images/gadgets/img4.jpg";
-import img5 from "../src/images/gadgets/img5.jpg";
-import img6 from "../src/images/gadgets/img6.jpg";
-import img7 from "../src/images/gadgets/img7.jpg";
-import img8 from "../src/images/gadgets/img8.jpg";
-import img9 from "../src/images/gadgets/img9.jpg";
-
-//all device img logo
-import apple from "../src/images/apple.jpg";
-import asus from "../src/images/asus.jpg";
-import google from "../src/images/google.jpg";
-import honor from "../src/images/honor.jpg";
-import huawei from "../src/images/huawei.jpg";
-import lenovo from "../src/images/lenovo.jpg";
-import mi from "../src/images/mi.jpg";
-import motorola from "../src/images/motorola.jpg";
-import nokia from "../src/images/nokia.jpg";
-import oneplus from "../src/images/oneplus.jpg";
-import oppo from "../src/images/oppo.jpg";
-import poco from "../src/images/poco.jpg";
-import realme from "../src/images/realme.jpg";
-import samsung from "../src/images/samsung.jpg";
 
 export const allDevice = [
   {
@@ -280,15 +278,13 @@ export const allDevice = [
 export const gadgets = [
   {
     id: 1,
-    name:
-      "GAVIN Battery Back Door Housing Panel Glass with Adhesive Sticker for",
+    name: "GAVIN Battery Back Door Housing Panel Glass with Adhesive Sticker for",
     photo: img1,
     price: 8.99,
   },
   {
     id: 2,
-    name:
-      "Fashion for iPhone Series Flip Wallet Case Leather Cover Cards Holder for",
+    name: "Fashion for iPhone Series Flip Wallet Case Leather Cover Cards Holder for",
     photo: img2,
     price: 5.99,
   },
@@ -339,77 +335,77 @@ export const allBrands = [
   {
     id: 1,
     photo: apple,
-    category:"apple"
+    category: "apple",
   },
   {
     id: 2,
     photo: samsung,
-    category:"samsung"
+    category: "samsung",
   },
   {
     id: 3,
     photo: asus,
-    category:"asus"
+    category: "asus",
   },
   {
     id: 4,
     photo: realme,
-    category:"realme"
+    category: "realme",
   },
   {
     id: 5,
     photo: apple,
-    category:"apple"
+    category: "apple",
   },
   {
     id: 6,
     photo: google,
-    category:"google"
+    category: "google",
   },
   {
     id: 7,
     photo: honor,
-    category:"honor"
+    category: "honor",
   },
   {
     id: 8,
     photo: huawei,
-    category:"huawei"
+    category: "huawei",
   },
   {
     id: 9,
     photo: lenovo,
-    category:"lenovo"
+    category: "lenovo",
   },
   {
     id: 10,
     photo: mi,
-    category:"redmi"
+    category: "redmi",
   },
   {
     id: 11,
     photo: motorola,
-    category:"motorola"
+    category: "motorola",
   },
   {
     id: 12,
     photo: nokia,
-    category:"nokia"
+    category: "nokia",
   },
   {
     id: 13,
     photo: oneplus,
-    category:"onePlus"
+    category: "onePlus",
   },
   {
     id: 14,
     photo: oppo,
-    category:"oppo"
+    category: "oppo",
   },
   {
     id: 15,
     photo: poco,
-    category:"poco"
+    category: "poco",
   },
 ];
 
@@ -417,7 +413,8 @@ export const usersReview = [
   {
     id: 1,
     name: "Nahid",
-    photo: "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    photo:
+      "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
     title: "Faster Services and Good Responses",
     posted: "June 19 2021",
     description: `It is a long established fact that a reader
@@ -429,7 +426,8 @@ export const usersReview = [
   {
     id: 2,
     name: "Shariar",
-    photo: "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    photo:
+      "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
     title: "Faster Services and Good Responses",
     posted: "June 19 2021",
     description: `It is a long established fact that a reader
@@ -439,7 +437,8 @@ export const usersReview = [
   {
     id: 3,
     name: "Amir",
-    photo: "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    photo:
+      "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
     title: "Faster Services and Good Responses",
     posted: "June 19 2021",
     description: `It is a long established fact that a reader
@@ -450,7 +449,8 @@ export const usersReview = [
   {
     id: 4,
     name: "Esuf",
-    photo: "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    photo:
+      "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
     title: "Faster Services and Good Responses",
     posted: "June 19 2021",
     description: `It is a long established fact that a reader
@@ -461,12 +461,108 @@ export const usersReview = [
   {
     id: 5,
     name: "NoBody",
-    photo: "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    photo:
+      "https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
     title: "Faster Services and Good Responses",
     posted: "June 19 2021",
     description: `It is a long established fact that a reader
      will be distracted by the readable content of a page
      when looking at its layout. The point of using Lorem Ipsum 
         look like readable English. Many desktop publishing packages`,
+  },
+];
+
+//stores location data
+export const allStoresLocations = [
+  {
+    id: 1,
+    location: "Dhaka",
+    photo:
+      "https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 23.810651,
+    long: 90.4126466,
+  },
+  {
+    id: 2,
+    location: "Kishoreganj",
+    photo:
+      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 24.433841,
+    long: 90.784843,
+  },
+  {
+    id: 3,
+    location: "Kumilla",
+    photo:
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 23.4610615,
+    long: 91.1808748,
+  },
+  {
+    id: 4,
+    location: "Brahmanbaria",
+    photo:
+      "https://images.unsplash.com/photo-1514565131-fce0801e5785?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2156&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 23.96638,
+    long: 90.784843,
+  },
+  {
+    id: 5,
+    location: "Sylhet",
+    photo:
+      "https://images.unsplash.com/photo-1517511620798-cec17d428bc0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 24.89922,
+    long: 91.8685271,
+  },
+  {
+    id: 6,
+    location: "Narayanganj",
+    photo:
+      "https://images.unsplash.com/photo-1417716146732-918825b83fa0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 23.6238108,
+    long: 90.4999662,
+  },
+  {
+    id: 7,
+    location: "Barisal",
+    photo:
+      "https://images.unsplash.com/photo-1462007895615-c8c073bebcd8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
+    description: `
+    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+     Deserunt harum exercitationem voluptas corrupti culpa 
+     earum ullam sit sunt iure esse?
+    `,
+    lat: 22.70038425,
+    long: 90.37503043047005,
   },
 ];
