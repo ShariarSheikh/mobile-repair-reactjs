@@ -8,7 +8,7 @@ export const StoreCart = ({ location }) => {
       <div
         onClick={() => history.push(`/store/${location.location}`)}
         key={location.id}
-        className="relative bg-blue-500 shadow-md pb-3 w-96 mr-4 mb-6 cursor-pointer rounded"
+        className="relative bg-blue-500 shadow-md pb-3 sm:w-2/5 max-w-sm w-11/12 sm:mr-4 mb-6 cursor-pointer rounded"
       >
         <img className="w-full h-52" src={location.photo} alt="locations" />
         <div className="pl-3">
