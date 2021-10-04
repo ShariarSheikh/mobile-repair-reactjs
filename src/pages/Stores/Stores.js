@@ -19,7 +19,6 @@ const Stores = () => {
           location.location.toLocaleLowerCase() === store.toLowerCase()
       );
       setData(findStore);
-      console.log("run");
     } else {
       setData(allStoresLocations);
     }

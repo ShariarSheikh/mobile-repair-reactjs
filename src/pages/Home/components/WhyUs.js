@@ -1,49 +1,5 @@
 import React from "react";
-import GuaranteedSafety from "../../../images/whyus/GuaranteedSafety.png";
-import instant from "../../../images/whyus/instant.png";
-import premium from "../../../images/whyus/premium.jpg";
-import protection from "../../../images/whyus/protection.png";
-import skilledTec from "../../../images/whyus/skilledtechnicians.jpg";
-import warranty from "../../../images/whyus/warranty.png";
-
-const whyUsCart = [
-  {
-    id: 1,
-    title: "Premium Repair",
-    photo: premium,
-    description: "lorem ipsum dolor lorem ipsum",
-  },
-  {
-    id: 2,
-    title: "Skilled Technicians",
-    photo: skilledTec,
-    description: "lorem ipsum dolor lorem ipsum",
-  },
-  {
-    id: 3,
-    title: "Instant Mobile Repair",
-    photo: instant,
-    description: "lorem ipsum dolor lorem ipsum",
-  },
-  {
-    id: 4,
-    title: "Guaranteed Safety",
-    photo: GuaranteedSafety,
-    description: "lorem ipsum dolor lorem ipsum",
-  },
-  {
-    id: 5,
-    title: "Physical Protection Warranty",
-    photo: protection,
-    description: "lorem ipsum dolor lorem ipsum",
-  },
-  {
-    id: 6,
-    title: "6 Months Warranty",
-    photo: warranty,
-    description: "lorem ipsum dolor lorem ipsum",
-  },
-];
+import { whyUsCart } from "../../../products";
 
 const WhyUs = () => {
   return (

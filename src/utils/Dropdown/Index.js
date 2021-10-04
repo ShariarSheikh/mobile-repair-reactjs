@@ -1,52 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { totalServicesList } from "../../products";
 import { removeUser } from "../../redux/userSlice/userSlice";
-
-const totalServicesList = [
-  {
-    id: 1,
-    device: "Apple",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "apple",
-  },
-  {
-    id: 2,
-    device: "Samsung",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "samsung",
-  },
-  {
-    id: 3,
-    device: "Redmi",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "redmi",
-  },
-  {
-    id: 4,
-    device: "Nokia",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "nokia",
-  },
-  {
-    id: 5,
-    device: "Huawei",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "huawei",
-  },
-  {
-    id: 6,
-    device: "Asus",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "asus",
-  },
-  {
-    id: 7,
-    device: "Tools",
-    description: "lorem ipsum dolor lorem ipsum",
-    category: "tools",
-  },
-];
 
 export const DropdownServices = ({ setDropdown }) => {
   return (
@@ -57,7 +13,7 @@ export const DropdownServices = ({ setDropdown }) => {
             <Link
               to={
                 service.category === "tools"
-                  ? `/gadgets/` + service.category
+                  ? `/gadgets`
                   : `/services/` + service.category
               }
               key={service.id}

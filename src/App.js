@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
 import DeviceRepairDetails from "./pages/DeviceRepairDetails/DeviceRepairDetails";
 import Error from "./pages/Error/Error";
+import Gadgets from "./pages/Gadgets/Gadgets";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Services from "./pages/Services/Services";
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/stores" component={Stores} />
           <Route exact path="/services/:device" component={Services} />
           <Route exact path="/device" component={DeviceRepairDetails} />
+          <Route exact path="/gadgets" component={Gadgets} />
           <Route exact path="/store/:location" component={StoreDetails} />
           <PrivateRoute exact path="/profile" component={UsersProfile} />
 

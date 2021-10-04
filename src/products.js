@@ -61,6 +61,13 @@ import samsung6 from "./images/samsung/sam6.png";
 import samsung7 from "./images/samsung/sam7.jpg";
 import samsung8 from "./images/samsung/sam8.jpg";
 import samsung9 from "./images/samsung/sam9.png";
+//why us img logo
+import GuaranteedSafety from "./images/whyus/GuaranteedSafety.png";
+import instant from "./images/whyus/instant.png";
+import premium from "./images/whyus/premium.jpg";
+import protection from "./images/whyus/protection.png";
+import skilledTec from "./images/whyus/skilledtechnicians.jpg";
+import warranty from "./images/whyus/warranty.png";
 
 export const allDevice = [
   {
@@ -564,5 +571,91 @@ export const allStoresLocations = [
     `,
     lat: 22.70038425,
     long: 90.37503043047005,
+  },
+];
+
+//why us text data
+export const whyUsCart = [
+  {
+    id: 1,
+    title: "Premium Repair",
+    photo: premium,
+    description: "lorem ipsum dolor lorem ipsum",
+  },
+  {
+    id: 2,
+    title: "Skilled Technicians",
+    photo: skilledTec,
+    description: "lorem ipsum dolor lorem ipsum",
+  },
+  {
+    id: 3,
+    title: "Instant Mobile Repair",
+    photo: instant,
+    description: "lorem ipsum dolor lorem ipsum",
+  },
+  {
+    id: 4,
+    title: "Guaranteed Safety",
+    photo: GuaranteedSafety,
+    description: "lorem ipsum dolor lorem ipsum",
+  },
+  {
+    id: 5,
+    title: "Physical Protection Warranty",
+    photo: protection,
+    description: "lorem ipsum dolor lorem ipsum",
+  },
+  {
+    id: 6,
+    title: "6 Months Warranty",
+    photo: warranty,
+    description: "lorem ipsum dolor lorem ipsum",
+  },
+];
+
+//services list
+export const totalServicesList = [
+  {
+    id: 1,
+    device: "Apple",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "apple",
+  },
+  {
+    id: 2,
+    device: "Samsung",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "samsung",
+  },
+  {
+    id: 3,
+    device: "Redmi",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "redmi",
+  },
+  {
+    id: 4,
+    device: "Nokia",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "nokia",
+  },
+  {
+    id: 5,
+    device: "Huawei",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "huawei",
+  },
+  {
+    id: 6,
+    device: "Asus",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "asus",
+  },
+  {
+    id: 7,
+    device: "Tools",
+    description: "lorem ipsum dolor lorem ipsum",
+    category: "tools",
   },
 ];

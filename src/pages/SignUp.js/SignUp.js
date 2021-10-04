@@ -3,7 +3,6 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { getUser } from "../../redux/userSlice/userSlice";
-import styles from "../../styles/pagesStyles/SignUp.module.css";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -70,13 +69,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.SignUp}>
-      <div id={styles.signup_container}>
+    <div className="w-full h-auto overflow-hidden">
+      <div className="min-h-screen">
         <section className="flex flex-row h-screen items-center">
           <div
             className="bg-white w-full md:max-w-md lg:max-w-full
              md:mx-auto  md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
-        flex items-center justify-center"
+             flex items-center justify-center"
           >
             <div className="w-full h-100">
               <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">

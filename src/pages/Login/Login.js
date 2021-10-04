@@ -3,7 +3,6 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { getUser } from "../../redux/userSlice/userSlice";
-import styles from "../../styles/pagesStyles/Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -68,8 +67,8 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.Login}>
-      <div id={styles.login_container}>
+    <div className="w-full h-auto overflow-hidden">
+      <div className="min-h-screen">
         <section className="flex flex-row h-screen items-center">
           <div
             className="bg-white w-full md:max-w-md lg:max-w-full
@@ -153,8 +152,9 @@ const Login = () => {
               </button>
 
               <p className="mt-8">
-                Need an account?{" "}
+                Need an account?
                 <a
+                  href="https://devex.vercel.app/"
                   onClick={() => history.push("/signup")}
                   className="text-blue-500 hover:text-blue-700 font-semibold cursor-pointer"
                 >

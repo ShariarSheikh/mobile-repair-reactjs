@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import styles from "../../../styles/components/GadgetsSlider.module.css";
-
-import "swiper/swiper.min.css";
-
 import { AiFillStar } from "react-icons/ai";
-
 import SwiperCore, { Pagination } from "swiper/core";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
 
 SwiperCore.use([Pagination]);
 
@@ -29,26 +23,26 @@ const GadgetsSlider = ({ gadgets }) => {
         }}
         breakpoints={{
           "@0.00": {
-            "slidesPerView": 1,
-            "spaceBetween": 10
+            slidesPerView: 1,
+            spaceBetween: 10,
           },
           "@0.75": {
-            "slidesPerView": 2,
-            "spaceBetween": 10
+            slidesPerView: 2,
+            spaceBetween: 10,
           },
           "@1.00": {
-            "slidesPerView": 3,
-            "spaceBetween": 10
+            slidesPerView: 3,
+            spaceBetween: 10,
           },
           "@1.50": {
-            "slidesPerView": 4,
-            "spaceBetween": 5
-          }
+            slidesPerView: 4,
+            spaceBetween: 5,
+          },
         }}
         className="mySwiper"
       >
         {gadgets.map((gd) => (
-          <SwiperSlide id={styles.gadgetsCart} key={gd.id}>
+          <SwiperSlide key={gd.id}>
             <div className="h-full w-full bg-white flex flex-col bg-transparent border items-center justify-center p-5">
               <img
                 className="bg-white h-52 w-80 object-contain"
