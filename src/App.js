@@ -20,17 +20,37 @@ const App = () => {
       <Header />
       <>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/stores" component={Stores} />
-          <Route exact path="/services/:device" component={Services} />
-          <Route exact path="/device" component={DeviceRepairDetails} />
-          <Route exact path="/gadgets" component={Gadgets} />
-          <Route exact path="/store/:location" component={StoreDetails} />
-          <PrivateRoute exact path="/profile" component={UsersProfile} />
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/stores">
+            <Stores />
+          </Route>
+          <Route exact path="/services/:device">
+            <Services />
+          </Route>
+          <Route exact path="/device">
+            <DeviceRepairDetails />
+          </Route>
+          <Route exact path="/gadgets">
+            <Gadgets />
+          </Route>
+          <Route exact path="/store/:location">
+            <StoreDetails />
+          </Route>
+          <PrivateRoute path="/profile">
+            <UsersProfile />
+          </PrivateRoute>
 
-          <PublicRoute exact path="/login" component={Login} />
-          <PublicRoute exact path="/signup" component={SignUp} />
-          <Route path="*" component={Error} />
+          <PublicRoute exact path="/login">
+            <Login />
+          </PublicRoute>
+          <PublicRoute exact path="/signup">
+            <SignUp />
+          </PublicRoute>
+          <Route path="*">
+            <Error />
+          </Route>
         </Switch>
       </>
       <Footer />

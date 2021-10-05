@@ -119,7 +119,7 @@ const HeaderCenter = () => {
 };
 
 //header right component
-const HeaderRight = () => {
+export const HeaderRight = () => {
   const [search, setSearch] = useState("");
   const { user } = useSelector((state) => state.user);
   const history = useHistory();
@@ -129,6 +129,9 @@ const HeaderRight = () => {
       search && history.push(`/stores?store=${search}`);
     }
   };
+ 
+
+
   return (
     <div className="hidden sm:block">
       <div className="relative flex flex-row items-center">

@@ -23,7 +23,6 @@ const Login = () => {
       email,
       password,
     };
-
     const config = {
       method: "POST",
       headers: {
@@ -65,6 +64,7 @@ const Login = () => {
         console.log(err);
       });
   };
+
 
   return (
     <div className="w-full h-auto overflow-hidden">

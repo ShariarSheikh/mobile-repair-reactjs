@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { getUser } from "../../redux/userSlice/userSlice";
 import DashboardHome from "./components/DashboardHome";
-import DashboardSidebar from "./components/DashboardSidebar";
+import DashboardNavigation from "./components/DashboardNavigation";
+import NotFound from "./components/NotFound";
 import Setting from "./components/Setting";
 
 const UsersProfile = () => {
-  const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,27 +33,30 @@ const UsersProfile = () => {
         })
         .catch((err) => {
           setLoading(false);
-          console.log(err.message);
+          console.log(err);
         });
     };
     fetchUserData();
   }, [history, dispatch]);
 
   if (loading) {
-    <div>loading...</div>;
+    <div className="text-white">loading...</div>;
   }
 
   return (
-    <div className="w-full">
-      <div className="max-w-7xl m-auto flex flex-col u-p-h ">
-        <DashboardSidebar />
-        <div className="p-6">
+    <div className="w-full bg-gray-900">
+      <div className="max-w-7xl w-full m-auto min-h-screen">
+        <DashboardNavigation />
+        <div>
           <Switch>
             <Route exact path="/profile">
-              <DashboardHome user={user} />
+              <DashboardHome />
             </Route>
             <Route exact path="/profile/setting">
               <Setting />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </div>

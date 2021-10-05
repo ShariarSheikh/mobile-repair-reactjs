@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user"))  : null,
+    user: localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null,
   },
 
   reducers: {
@@ -16,11 +18,11 @@ export const userSlice = createSlice({
       state.user = null;
 
       localStorage.removeItem("user");
-      localStorage.removeItem("token")
+      localStorage.removeItem("token");
     },
   },
 });
 
-export const { getUser,removeUser } = userSlice.actions;
+export const { getUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
