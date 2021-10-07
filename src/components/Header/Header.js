@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineBell,
   AiOutlineClose,
@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import logo from "../../images/lime-274.png";
 import {
   DropdownCart,
@@ -20,6 +20,20 @@ import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const history = useHistory();
+  const location = useLocation();
+  //check if route change
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [location.pathname]);
+  //check if page width gether then 1280px
+
+  const handleResize = () => {
+    const { innerWidth: width } = window;
+    if (width >= 1280) {
+      setOpenMenu(false);
+    }
+  };
+  window.addEventListener("resize", handleResize);
 
   return (
     <nav className="z-50 w-full h-20 nav_bg sticky top-0" id="#">
@@ -129,8 +143,6 @@ export const HeaderRight = () => {
       search && history.push(`/stores?store=${search}`);
     }
   };
- 
-
 
   return (
     <div className="hidden sm:block">

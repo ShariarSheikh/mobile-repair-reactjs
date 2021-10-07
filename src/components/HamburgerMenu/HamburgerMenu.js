@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineBell, AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { totalServicesList } from "../../products";
 import { DropdownCart, DropdownProfileMenu } from "../../utils/Dropdown/Index";
 
 const HamburgerMenu = ({ openMenu }) => {
+  const [openService, setOpenService] = useState(false);
+
   const { user } = useSelector((state) => state.user);
   const history = useHistory();
 
@@ -16,18 +19,26 @@ const HamburgerMenu = ({ openMenu }) => {
     }
   }, [openMenu]);
 
+  const handleLink = (text) => {
+    if (text === "services") {
+      setOpenService((prevState) => !prevState);
+    } else {
+      history.push(`/${text}`);
+    }
+  };
+
   return (
     <div
-      className={`fixed w-full nav_bg ${
-        openMenu ? `h-full block` : `h-0 hidden`
+      className={`relative w-full nav_bg ${
+        openMenu ? `min-h-screen h-auto block` : `h-0 hidden`
       } z-50 transition delay-150 duration-300 ease-in-out`}
     >
       <div
-        className={`relative w-full  ${
-          openMenu ? `h-full opacity-100` : `h-0 opacity-0`
-        } z-50 flex justify-center items-start transition delay-150 duration-300 ease-in-out`}
+        className={`relative w-full overflow-y-scroll ${
+          openMenu ? `h-screen` : `h-0 `
+        } z-50 transition delay-150 duration-300 ease-in-out`}
       >
-        <ul className="p-0 mt-16 text-center ">
+        <ul className="w-full h-auto p-0 mt-16 text-center">
           <div className="w-full flex flex-row items-center justify-center mb-8">
             {user && (
               <>
@@ -50,32 +61,33 @@ const HamburgerMenu = ({ openMenu }) => {
           </div>
 
           <li
-            className="text-3xl cursor-pointer mb-6  text-white"
-            onClick={() => history.push("/stores")}
+            className="text-3xl cursor-pointer mb-6 text-gray-300 uppercase font-semibold font-roboto"
+            onClick={() => handleLink("stores")}
           >
             Stores
           </li>
           <li
-            className="text-3xl cursor-pointer mb-6  text-white"
-            onClick={() => history.push("/services")}
+            className="text-3xl cursor-pointer mb-6 text-gray-300 uppercase font-semibold font-roboto"
+            onClick={() => handleLink("services")}
           >
             Services
           </li>
+          <ServiceList openService={openService} />
           <li
-            className="text-3xl cursor-pointer mb-6  text-white"
-            onClick={() => history.push("/aboutus")}
+            className="text-3xl cursor-pointer mb-6 text-gray-300 uppercase font-semibold font-roboto"
+            onClick={() => handleLink("aboutus")}
           >
             About Us
           </li>
           <li
-            className="text-3xl cursor-pointer mb-6  text-white"
-            onClick={() => history.push("/contactus")}
+            className="text-3xl cursor-pointer mb-6 text-gray-300 uppercase font-semibold font-roboto"
+            onClick={() => handleLink("contactus")}
           >
             Contact Us
           </li>
           <li
-            className="text-3xl cursor-pointer mb-6  text-white"
-            onClick={() => history.push("/support")}
+            className="text-3xl cursor-pointer mb-6 text-gray-300 uppercase font-semibold font-roboto"
+            onClick={() => handleLink("support")}
           >
             Support
           </li>
@@ -84,24 +96,24 @@ const HamburgerMenu = ({ openMenu }) => {
             <>
               <div
                 onClick={() => history.push("/login")}
-                className="cursor-pointer  text-3xl text-white rounded mb-6"
+                className="cursor-pointer  text-3xl text-gray-300 rounded uppercase font-semibold font-roboto mb-6"
               >
                 LogIn
               </div>
               <div
                 onClick={() => history.push("/signup")}
-                className=" cursor-pointer text-3xl mb-6 text-white "
+                className=" cursor-pointer text-3xl text-gray-300 uppercase font-semibold font-roboto"
               >
                 Register
               </div>
             </>
           )}
 
-          <div className="absolute bottom-20">
+          <li className="relative top-10">
             <p className="text-white pb-5 text-base">
               Copyright © <b>Dev.S</b>
             </p>
-          </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -109,3 +121,29 @@ const HamburgerMenu = ({ openMenu }) => {
 };
 
 export default HamburgerMenu;
+
+const ServiceList = ({ openService }) => {
+  const history = useHistory();
+
+  return (
+    <ul
+      className={`w-full bg-gray-700 transition transform duration-200 overflow-hidden ${
+        openService ? "h-auto" : "h-0"
+      }`}
+    >
+      {totalServicesList.map(({ id, device, category }) => (
+        <li
+          onClick={() =>
+            history.push(
+              `${category === "tools" ? `/gadgets` : `/services/${category}`}`
+            )
+          }
+          className="text-gray-300 text-xl font-roboto mb-2 py-3 cursor-pointer uppercase"
+          key={id}
+        >
+          {device}
+        </li>
+      ))}
+    </ul>
+  );
+};
