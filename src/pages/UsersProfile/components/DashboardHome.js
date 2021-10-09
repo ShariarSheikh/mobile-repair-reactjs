@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const cartInfo = [
   {
@@ -40,8 +40,10 @@ const cartInfo = [
 ];
 
 const DashboardHome = () => {
+
   return (
     <main className="w-full relative">
+      {/* cartInfo */}
       <div className="flex flex-wrap">
         {cartInfo.map(({ id, title, data, iconBg }) => (
           <div key={id} className="w-full md:w-1/2 xl:w-1/3 p-3">
@@ -59,6 +61,8 @@ const DashboardHome = () => {
           </div>
         ))}
       </div>
+
+
     </main>
   );
 };

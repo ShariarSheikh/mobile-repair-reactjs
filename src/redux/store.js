@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userSlice from './userSlice/userSlice'
+import repairDevicesSlice, {
+  repairDevicesFetch,
+} from "./repairDevicesSlice/repairDevicesSlice";
+import userSlice from "./userSlice/userSlice";
 
-export default configureStore({
-    reducer: {
-        user:userSlice,
-    },
-  })
+export const store = configureStore({
+  reducer: {
+    user: userSlice,
+    repairDevicesData: repairDevicesSlice,
+  },
+});
 
-  
+store.dispatch(repairDevicesFetch());
