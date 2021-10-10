@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const updateRepairDevice = createAsyncThunk(
-  "repairDevices/updateRepairDevice",
+export const updateServicesStore = createAsyncThunk(
+  "servicesStore/updateServicesStore",
   async (device) => {
     const response = await axios.patch(
       `https://stormy-woodland-67379.herokuapp.com/api/mobile-repair-devices/${device.id}`,
@@ -14,8 +14,8 @@ export const updateRepairDevice = createAsyncThunk(
   }
 );
 
-export const updateRepairDeviceSlice = createSlice({
-  name: "update repair device",
+export const servicesStoreUpdateSlice = createSlice({
+  name: "update services store",
   initialState: {
     status: null,
     updateDevice: null,
@@ -23,30 +23,30 @@ export const updateRepairDeviceSlice = createSlice({
   },
 
   reducers: {
-    openUpdateModelRepair: (state, action) => {
+    openUpdateServiceStore: (state, action) => {
       state.updateDevice = action.payload;
       state.openModel = true;
       state.status = null;
     },
-    closeUpdateModelRepair: (state, action) => {
+    closeUpdateServiceStore: (state, action) => {
       state.openModel = false;
       state.status = null;
     },
   },
   extraReducers: {
-    [updateRepairDevice.pending]: (state, action) => {
+    [updateServicesStore.pending]: (state, action) => {
       state.status = "pending";
     },
-    [updateRepairDevice.fulfilled]: (state, action) => {
+    [updateServicesStore.fulfilled]: (state, action) => {
       state.status = "success";
     },
-    [updateRepairDevice.rejected]: (state, action) => {
+    [updateServicesStore.rejected]: (state, action) => {
       state.status = "rejected";
     },
   },
 });
 
-export const { openUpdateModelRepair, closeUpdateModelRepair } =
-  updateRepairDeviceSlice.actions;
+export const { openUpdateServiceStore, closeUpdateServiceStore } =
+  servicesStoreUpdateSlice.actions;
 
-export default updateRepairDeviceSlice.reducer;
+export default servicesStoreUpdateSlice.reducer;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { totalServicesList } from "../../products";
 import { removeUser } from "../../redux/userSlice/userSlice";
@@ -40,6 +40,8 @@ export const DropdownServices = ({ setDropdown }) => {
 };
 
 export const DropdownProfileMenu = ({ img }) => {
+  const { user } = useSelector((state) => state.user);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -50,10 +52,19 @@ export const DropdownProfileMenu = ({ img }) => {
   }, [isOpenMenu]);
 
   const clickHandler = (text) => {
-    text === "Profile" && history.push("/profile");
-    text === "Setting" && history.push("/profile/setting");
-    text === "Logout" && dispatch(removeUser());
-    text === "Logout" && history.push("/");
+    if (user?.data.email === process.env.REACT_APP_ADMIN_EMAIL) {
+      //admin login
+      text === "Profile" && history.push("/admin");
+      text === "Setting" && history.push("/admin/setting");
+      text === "Logout" && dispatch(removeUser());
+      text === "Logout" && history.push("/");
+    } else if (user.data.isAdmin === false) {
+      //if normal user login
+      text === "Profile" && history.push("/user");
+      text === "Setting" && history.push("/user/setting");
+      text === "Logout" && dispatch(removeUser());
+      text === "Logout" && history.push("/");
+    }
 
     setIsOpenMenu(false);
   };

@@ -33,7 +33,6 @@ const CreateNew = () => {
         photo: "",
       });
     } else {
-      console.log(repairDevice);
       alert("Please select Category");
     }
   };

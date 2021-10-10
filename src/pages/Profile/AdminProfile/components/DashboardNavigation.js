@@ -151,7 +151,7 @@ const HeaderBottom = () => {
               activeClassName={`border-${borderColor}`}
               key={id}
               className={`flex flex-row items-center mr-6 my-2 md:my-0 cursor-pointer border-b-2 border-transparent`}
-              to={`/profile${link}`}
+              to={`/admin${link}`}
             >
               {Icon}
               <p

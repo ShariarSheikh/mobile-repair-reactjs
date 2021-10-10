@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { repairDevicesFetch } from "../../redux/repairDevicesSlice/repairDevicesSlice";
-import { openUpdateModel } from "../../redux/repairDevicesSlice/updateRepairDeviceSlice";
+import { openUpdateModelRepair } from "../../redux/repairDevicesSlice/updateRepairDeviceSlice";
 import CategoryList from "./CategoryList";
 
 //repair device list
@@ -48,9 +48,8 @@ const CategorySection = () => {
       photo,
       category,
     };
-    dispatch(openUpdateModel(deviceData));
+    dispatch(openUpdateModelRepair(deviceData));
   };
-  const isUpdate = true;
 
   useEffect(() => {
     isDelete?.status === "success" && dispatch(repairDevicesFetch());
@@ -73,42 +72,36 @@ const CategorySection = () => {
             devicesData={apple}
             isDelete={isDelete}
             updateHandler={updateHandler}
-            isUpdate={isUpdate}
           />
           <CategoryList
             deviceCategory="Samsung Devices"
             devicesData={samsung}
             isDelete={isDelete}
             updateHandler={updateHandler}
-            isUpdate={isUpdate}
           />
           <CategoryList
             deviceCategory="Redmi Devices"
             devicesData={redmi}
             isDelete={isDelete}
             updateHandler={updateHandler}
-            isUpdate={isUpdate}
           />
           <CategoryList
             deviceCategory="Nokia Devices"
             devicesData={nokia}
             isDelete={isDelete}
             updateHandler={updateHandler}
-            isUpdate={isUpdate}
           />
           <CategoryList
             deviceCategory="Huawei Devices"
             devicesData={huawei}
             isDelete={isDelete}
             updateHandler={updateHandler}
-            isUpdate={isUpdate}
           />
           <CategoryList
             deviceCategory="Asus Devices"
             devicesData={asus}
             isDelete={isDelete}
             updateHandler={updateHandler}
-            isUpdate={isUpdate}
           />
         </>
       )}

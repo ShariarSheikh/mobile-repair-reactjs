@@ -33,7 +33,7 @@
 #bg_img {
   position: relative;
   width: 100%;
-  background-color:#03103a;
+  background-color: #03103a;
 }
 #img_bounce {
   -webkit-animation: bounce 3s infinite ease-in-out;
@@ -69,7 +69,6 @@
   }
 }
 
-
 /* footer social links color  */
 #iconIdentify_f {
   background-color: #3b5998;
@@ -79,4 +78,16 @@
 }
 #iconIdentify_y {
   background-color: #b00;
+}
+
+/* hide input arrow number */
+.hide-arrow-number::-webkit-outer-spin-button,
+.hide-arrow-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.hide-arrow-number[type="number"] {
+  -moz-appearance: textfield;
 }
