@@ -1,29 +1,26 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { allStoresLocations } from "../../products";
 import AboutStore from "./components/AboutStore";
 import StoreMap from "./components/StoreMap";
 
 const StoreDetails = () => {
+  const { servicesStore } = useSelector((state) => state.servicesStore);
+
   const [storeOpen, setStoreOpen] = useState(false);
   const [locationData, setLocationData] = useState();
   const { location } = useParams();
 
   useEffect(() => {
     if (location) {
-      const data = allStoresLocations.filter(
-        (x) => x.location.toLowerCase() === location.toLowerCase()
+      const data = servicesStore.filter(
+        (x) => x.locationName.toLowerCase() === location.toLowerCase()
       );
       setLocationData(data[0]);
     } else {
       setLocationData();
     }
-  }, [location]);
-
-  const center = [
-    locationData && locationData.lat,
-    locationData && locationData.long,
-  ];
+  }, [location, servicesStore]);
 
   setInterval(() => {
     const now = new Date().getHours();
@@ -81,7 +78,7 @@ const StoreDetails = () => {
             {/* .. */}
             <div className="w-full flex flex-col md:flex-row justify-between mt-5 pb-8">
               <AboutStore location={location} />
-              <StoreMap center={center} />
+              <StoreMap lat={locationData?.lat} long={locationData?.long} />
             </div>
           </div>
         </section>

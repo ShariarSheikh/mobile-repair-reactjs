@@ -1,5 +1,3 @@
-import FileBase from "react-file-base64";
-
 const StoreForm = ({
   isDone,
   locationStore,
@@ -10,9 +8,9 @@ const StoreForm = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-gray-500 bg-gray-900 border border-gray-500 rounded-md p-3 w-80"
+      className="text-gray-500 bg-gray-900 border border-gray-500 rounded-md p-3 w-80 z-30"
     >
-      <h2 className="text-xl font-bold">Upload Repairing new device</h2>
+      <h2 className="text-xl font-bold">Upload Stores new Location</h2>
 
       {isDone?.status === "success" && (
         <p className="text-green-500">{successMessage}</p>
@@ -84,11 +82,11 @@ const StoreForm = ({
 
       <div className="mt-4 mb-4 flex flex-col">
         <label htmlFor="Device Image">Device Image</label>
-        <FileBase
+        <input
           type="file"
-          multiple={false}
-          onDone={({ base64 }) =>
-            setLocationStore({ ...locationStore, photo: base64 })
+          accept="image/gif, image/jpeg, image/png"
+          onChange={(e) =>
+            setLocationStore({ ...locationStore, photo: e.target.files[0] })
           }
         />
       </div>

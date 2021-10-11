@@ -5,7 +5,7 @@ export const createRepairDevice = createAsyncThunk(
   "repairDevices/createRepairDevice",
   async (device) => {
     const response = await axios.post(
-      "https://stormy-woodland-67379.herokuapp.com/api/mobile-repair-devices/create",
+      "http://localhost:9000/api/mobile-repair-devices/create",
       device
     );
 

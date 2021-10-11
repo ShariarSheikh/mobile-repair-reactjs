@@ -19,26 +19,35 @@ const CreateNew = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const data = new FormData();
+    data.append("photo", repairDevice.photo);
+    data.append("device", repairDevice.device.toUpperCase());
+    data.append("description", repairDevice.description);
+    data.append("category",repairDevice.category);
+
     if (
       repairDevice.device &&
       repairDevice.description &&
       repairDevice.category &&
       repairDevice.photo
     ) {
-      dispatch(createRepairDevice(repairDevice));
-      setRepairDevice({
-        device: "",
-        description: "",
-        category: "Apple",
-        photo: "",
-      });
+      dispatch(createRepairDevice(data));
     } else {
       alert("Please select Category");
     }
   };
 
   useEffect(() => {
-    isCreate?.status === "success" && dispatch(repairDevicesFetch());
+    if (isCreate?.status === "success") {
+      dispatch(repairDevicesFetch());
+      setRepairDevice({
+        device: "",
+        description: "",
+        category: "Apple",
+        photo: "",
+      });
+    }
   }, [isCreate, dispatch]);
 
   return (

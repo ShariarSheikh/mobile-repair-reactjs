@@ -11,13 +11,14 @@ const CategorySection = () => {
   const dispatch = useDispatch();
 
   //update devices data by calling api
-  const updateHandler = (id, locationName, description, photo, location) => {
+  const updateHandler = (id, locationName, description, photo, lat, long) => {
     const deviceData = {
       id,
       locationName,
       description,
       photo,
-      location,
+      lat,
+      long,
     };
     dispatch(openUpdateServiceStore(deviceData));
   };
@@ -25,6 +26,7 @@ const CategorySection = () => {
   useEffect(() => {
     if (isDelete?.status === "success") {
       dispatch(servicesStoreFetch());
+      alert("deleted");
     }
   }, [isDelete, dispatch]);
 

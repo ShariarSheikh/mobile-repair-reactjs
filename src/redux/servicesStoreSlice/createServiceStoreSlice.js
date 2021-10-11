@@ -3,10 +3,10 @@ import axios from "axios";
 
 export const createServiceStore = createAsyncThunk(
   "serviceStore/createServiceStore",
-  async (device) => {
+  async (data) => {
     const response = await axios.post(
-      "http://localhost:9000/api/service-stores/create",
-      device
+      "https://stormy-woodland-67379.herokuapp.com/api/service-stores/create",
+      data
     );
 
     response?.data.success && alert("Successfully created");

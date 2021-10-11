@@ -53,7 +53,7 @@ const UpdateRepairDevice = () => {
   }, [isUpdate, dispatch]);
 
   return (
-    <div className="w-full h-auto bg-black bg-opacity-60 fixed right-0 top-0">
+    <div className="w-full h-auto bg-black bg-opacity-60 fixed right-0 top-0 z-40">
       <div className="relative w-full h-screen flex justify-center items-center">
         <div className="absolute right-10 top-20 p-5">
           <AiOutlineClose

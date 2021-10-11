@@ -10,7 +10,7 @@ const RepairDeviceForm = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-gray-500 bg-gray-900 border border-gray-500 rounded-md p-3 w-80"
+      className="text-gray-500 bg-gray-900 border border-gray-500 rounded-md p-3 w-80 z-30"
     >
       <h2 className="text-xl font-bold">Upload Repairing new device</h2>
 
@@ -73,11 +73,11 @@ const RepairDeviceForm = ({
 
       <div className="mt-4 mb-4 flex flex-col">
         <label htmlFor="Device Image">Device Image</label>
-        <FileBase
+        <input
           type="file"
-          multiple={false}
-          onDone={({ base64 }) =>
-            setRepairDevice({ ...repairDevice, photo: base64 })
+          accept="image/gif, image/jpeg, image/png"
+          onChange={(e) =>
+            setRepairDevice({ ...repairDevice, photo: e.target.files[0] })
           }
         />
       </div>

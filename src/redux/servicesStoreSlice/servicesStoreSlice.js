@@ -5,7 +5,7 @@ export const servicesStoreFetch = createAsyncThunk(
   "servicesStore/servicesStoreFetch",
   async () => {
     const response = await axios.get(
-      "http://localhost:9000/api/service-stores/get"
+      "https://stormy-woodland-67379.herokuapp.com/api/service-stores/get"
     );
     return response.data.servicesStore;
   }

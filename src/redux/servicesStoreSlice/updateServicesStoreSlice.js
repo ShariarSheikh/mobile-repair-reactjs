@@ -3,12 +3,11 @@ import axios from "axios";
 
 export const updateServicesStore = createAsyncThunk(
   "servicesStore/updateServicesStore",
-  async (device) => {
+  async (store) => {
     const response = await axios.patch(
-      `https://stormy-woodland-67379.herokuapp.com/api/mobile-repair-devices/${device.id}`,
-      device
+      `https://stormy-woodland-67379.herokuapp.com/api/service-stores/update/${store.id}`,
+      store.data
     );
-
     response.data.success && alert("Updated successfully");
     return response.data;
   }
@@ -18,13 +17,13 @@ export const servicesStoreUpdateSlice = createSlice({
   name: "update services store",
   initialState: {
     status: null,
-    updateDevice: null,
+    updateStore: null,
     openModel: false,
   },
 
   reducers: {
     openUpdateServiceStore: (state, action) => {
-      state.updateDevice = action.payload;
+      state.updateStore = action.payload;
       state.openModel = true;
       state.status = null;
     },

@@ -8,7 +8,7 @@ const LocationCart = ({ devicesData, isDelete, updateHandler, isUpdate }) => {
     <>
       {devicesData.length > 0 ? (
         <div className="flex flex-wrap flex-row justify-start ">
-          {devicesData?.map(({ _id, locationName, description, photo,location }) => (
+          {devicesData?.map(({ _id, locationName, description, photo,lat,long }) => (
             <div
               key={_id}
               className="w-48 h-auto text-gray-300 overflow-hidden bg-gray-700 pt-2 mt-2 ml-2"
@@ -29,7 +29,7 @@ const LocationCart = ({ devicesData, isDelete, updateHandler, isUpdate }) => {
                 <div className="w-full flex justify-between bg-gray-800 py-3 px-2">
                   <button
                     onClick={() =>
-                      updateHandler(_id, locationName, description, photo, location)
+                      updateHandler(_id, locationName, description, photo, lat,long)
                     }
                   >
                     Update

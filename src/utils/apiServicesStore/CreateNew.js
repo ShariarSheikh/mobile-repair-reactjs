@@ -21,24 +21,22 @@ const CreateNew = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newStore = {
-      locationName: locationStore.locationName.toLocaleUpperCase(),
-      description: locationStore.locationName,
-      location: {
-        lat: Number(locationStore.lat),
-        long: Number(locationStore.long),
-      },
-      photo: locationStore.photo,
-    };
+    const data = new FormData();
+
+    data.append("photo", locationStore.photo);
+    data.append("locationName", locationStore.locationName.toLocaleUpperCase());
+    data.append("description", locationStore.description);
+    data.append("lat", Number(locationStore.lat));
+    data.append("long", Number(locationStore.long));
 
     if (
-      newStore.locationName &&
-      newStore.locationName &&
-      newStore.location.lat &&
-      newStore.location.long &&
-      newStore.photo
+      locationStore.locationName &&
+      locationStore.description &&
+      locationStore.lat &&
+      locationStore.long &&
+      locationStore.photo
     ) {
-      dispatch(createServiceStore(newStore));
+      dispatch(createServiceStore(data));
     } else {
       alert("Please fullfil all input");
     }

@@ -8,8 +8,8 @@ const UserRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        user.data.email &&
-        !user.data.email !== process.env.REACT_APP_ADMIN_EMAIL ? (
+        user?.data.email &&
+        user?.data.email !== process.env.REACT_APP_ADMIN_EMAIL ? (
           children
         ) : (
           <Redirect

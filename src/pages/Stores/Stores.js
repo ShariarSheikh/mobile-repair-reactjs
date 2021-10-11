@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 import { allStoresLocations } from "../../products";
 import LocationsFeed from "./components/LocationsFeed";
 import StoresHero from "./components/StoresHero";
 
 const Stores = () => {
+  const {servicesStore} = useSelector((state) => state.servicesStore)
+
   const [data, setData] = useState([]);
 
   const history = useHistory();
@@ -14,15 +17,15 @@ const Stores = () => {
 
   useEffect(() => {
     if (store) {
-      const findStore = allStoresLocations.filter(
+      const findStore = servicesStore.filter(
         (location) =>
-          location.location.toLocaleLowerCase() === store.toLowerCase()
+          location.locationName.toLocaleLowerCase() === store.toLowerCase()
       );
       setData(findStore);
     } else {
-      setData(allStoresLocations);
+      setData(servicesStore);
     }
-  }, [store]);
+  }, [store,servicesStore]);
 
   return (
     <div
