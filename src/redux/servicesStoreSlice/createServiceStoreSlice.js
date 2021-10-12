@@ -5,7 +5,7 @@ export const createServiceStore = createAsyncThunk(
   "serviceStore/createServiceStore",
   async (data) => {
     const response = await axios.post(
-      "https://stormy-woodland-67379.herokuapp.com/api/service-stores/create",
+      process.env.REACT_APP_VERCEL_URL_GET_SERVICES_STORE_CREATE,
       data
     );
 

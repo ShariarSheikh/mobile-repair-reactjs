@@ -5,7 +5,7 @@ export const servicesStoreFetch = createAsyncThunk(
   "servicesStore/servicesStoreFetch",
   async () => {
     const response = await axios.get(
-      "https://stormy-woodland-67379.herokuapp.com/api/service-stores/get"
+      process.env.REACT_APP_VERCEL_URL_GET_SERVICES_STORE
     );
     return response.data.servicesStore;
   }

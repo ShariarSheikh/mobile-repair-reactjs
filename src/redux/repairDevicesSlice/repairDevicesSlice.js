@@ -5,7 +5,7 @@ export const repairDevicesFetch = createAsyncThunk(
   "repairDevices/repairDevicesFetch",
   async () => {
     const response = await axios.get(
-      "https://stormy-woodland-67379.herokuapp.com/api/mobile-repair-devices/get"
+      process.env.REACT_APP_VERCEL_URL_GET_REPAIR_DEVICE
     );
     return response.data;
   }

@@ -6,7 +6,7 @@ export const deleteRepairDevice = createAsyncThunk(
   async (id) => {
     alert("device will delete now");
     const response = await axios.delete(
-      `https://stormy-woodland-67379.herokuapp.com/api/mobile-repair-devices/delete/${id}`
+      `${process.env.REACT_APP_VERCEL_URL_GET_REPAIR_DEVICE_DELETE}${id}`
     );
 
     response.data.success && alert("Deleted successfully");

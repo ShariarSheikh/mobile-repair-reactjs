@@ -5,7 +5,7 @@ export const serviceStoreDelete = createAsyncThunk(
   "serviceStore/servicesStoreDelete",
   async (id) => {
     const response = await axios.delete(
-      `https://stormy-woodland-67379.herokuapp.com/api/service-stores/delete/${id}`
+      `${process.env.REACT_APP_VERCEL_URL_GET_SERVICES_STORE_DELETE}${id}`
     );
     response.data.success && alert("Deleted successfully");
     return response.data;

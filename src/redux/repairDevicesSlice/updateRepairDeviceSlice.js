@@ -5,7 +5,7 @@ export const updateRepairDevice = createAsyncThunk(
   "repairDevices/updateRepairDevice",
   async (device) => {
     const response = await axios.patch(
-      `https://stormy-woodland-67379.herokuapp.com/api/mobile-repair-devices/${device.id}`,
+      `${process.env.REACT_APP_VERCEL_URL_GET_REPAIR_DEVICE_UPDATE}${device.id}`,
       device
     );
 

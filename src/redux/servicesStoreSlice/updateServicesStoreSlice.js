@@ -5,7 +5,7 @@ export const updateServicesStore = createAsyncThunk(
   "servicesStore/updateServicesStore",
   async (store) => {
     const response = await axios.patch(
-      `https://stormy-woodland-67379.herokuapp.com/api/service-stores/update/${store.id}`,
+      `${process.env.REACT_APP_VERCEL_URL_GET_SERVICES_STORE_UPDATE}${store.id}`,
       store.data
     );
     response.data.success && alert("Updated successfully");

@@ -5,7 +5,7 @@ export const createRepairDevice = createAsyncThunk(
   "repairDevices/createRepairDevice",
   async (device) => {
     const response = await axios.post(
-      "http://localhost:9000/api/mobile-repair-devices/create",
+      process.env.REACT_APP_VERCEL_URL_GET_REPAIR_DEVICE_CREATE,
       device
     );
 
