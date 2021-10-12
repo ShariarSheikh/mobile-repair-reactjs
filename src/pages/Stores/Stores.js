@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
-import { allStoresLocations } from "../../products";
 import LocationsFeed from "./components/LocationsFeed";
 import StoresHero from "./components/StoresHero";
 
 const Stores = () => {
-  const {servicesStore} = useSelector((state) => state.servicesStore)
+  const { servicesStore } = useSelector((state) => state.servicesStore);
 
   const [data, setData] = useState([]);
 
@@ -25,7 +24,7 @@ const Stores = () => {
     } else {
       setData(servicesStore);
     }
-  }, [store,servicesStore]);
+  }, [store, servicesStore]);
 
   return (
     <div

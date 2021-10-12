@@ -34,7 +34,7 @@ const SignUp = () => {
     };
 
     fetch(
-      "https://stormy-woodland-67379.herokuapp.com/auth/user/register",
+      process.env.REACT_APP_VERCEL_URL_REGISTER,
       config
     )
       .then((res) => res.json())
@@ -50,7 +50,7 @@ const SignUp = () => {
   };
 
   const fetchUserData = () => {
-    const url = "https://stormy-woodland-67379.herokuapp.com/auth/user/profile";
+    const url = process.env.REACT_APP_VERCEL_URL_FETCH_USER_DATA;
     const config = {
       headers: {
         "Content-Type": "application/json",

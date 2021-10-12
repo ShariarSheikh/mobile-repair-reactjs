@@ -31,7 +31,7 @@ const Login = () => {
       body: JSON.stringify(user),
     };
 
-    fetch("https://stormy-woodland-67379.herokuapp.com/auth/user/login", config)
+    fetch(process.env.REACT_APP_VERCEL_URL_LOGIN, config)
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("token", data.token);
@@ -47,7 +47,7 @@ const Login = () => {
   };
 
   const fetchUserData = () => {
-    const url = "https://stormy-woodland-67379.herokuapp.com/auth/user/profile";
+    const url =process.env.REACT_APP_VERCEL_URL_FETCH_USER_DATA;
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,6 @@ const Login = () => {
         console.log(err);
       });
   };
-
 
   return (
     <div className="w-full h-auto overflow-hidden">

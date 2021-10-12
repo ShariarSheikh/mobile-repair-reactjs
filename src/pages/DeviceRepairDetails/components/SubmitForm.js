@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { allStoresLocations } from "../../../products";
+import { useSelector } from "react-redux";
 
 const SubmitForm = () => {
+  const { servicesStore } = useSelector((state) => state.servicesStore);
   const [storeLocation, setStoreLocation] = useState("");
 
   useEffect(() => {}, []);
- 
   //handleLocation
-  const handleLocation =(e)=>{
-    setStoreLocation(e.target.value)
-  }
+  const handleLocation = (e) => {
+    setStoreLocation(e.target.value);
+  };
   return (
     <form className="md:w-3/5 w-full relative h-auto mt-5 md:mt-0 bg-white">
       {/* store location selector */}
@@ -25,24 +25,25 @@ const SubmitForm = () => {
           onChange={(e) => handleLocation(e)}
           className="md:ml-4 md:px-4 h-full bg-gray-100 outline-none"
         >
-          {allStoresLocations.map((x) => (
-            <option key={x.id} value={x.location.toLocaleLowerCase()}>{x.location}</option>
+          {servicesStore?.map((x) => (
+            <option key={x._id} value={x.locationName.toLocaleLowerCase()}>
+              {x.locationName}
+            </option>
           ))}
         </select>
       </div>
-     <ComingSoon/>
+      <ComingSoon />
     </form>
   );
 };
 
 export default SubmitForm;
 
-
-const ComingSoon=()=>{
-return(
-  <div className="mt-5 w-full h-60 flex flex-col items-center justify-center bg-gray-100">
-     <h2>Working on this projects</h2>
-     <p>ComingSoon</p>
-  </div>
-)
-}
+const ComingSoon = () => {
+  return (
+    <div className="mt-5 w-full h-60 flex flex-col items-center justify-center bg-gray-100">
+      <h2>Working on this projects</h2>
+      <p>ComingSoon</p>
+    </div>
+  );
+};

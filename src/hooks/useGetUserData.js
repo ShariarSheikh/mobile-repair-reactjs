@@ -13,8 +13,7 @@ const useGetUserData = () => {
   useEffect(() => {
     const fetchUserData = () => {
       setLoading(true);
-      const url =
-        "https://stormy-woodland-67379.herokuapp.com/auth/user/profile";
+      const url = process.env.REACT_APP_VERCEL_URL_FETCH_USER_DATA;
       const config = {
         headers: {
           "Content-Type": "application/json",
