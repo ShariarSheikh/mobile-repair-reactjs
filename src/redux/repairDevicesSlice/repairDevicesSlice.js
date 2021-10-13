@@ -5,7 +5,7 @@ export const repairDevicesFetch = createAsyncThunk(
   "repairDevices/repairDevicesFetch",
   async () => {
     const response = await axios.get(
-      process.env.REACT_APP_VERCEL_URL_GET_REPAIR_DEVICE
+      process.env.REACT_APP_VERCEL_ENV_GET_REPAIR_DEVICE
     );
     return response.data;
   }

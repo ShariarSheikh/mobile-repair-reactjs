@@ -5,7 +5,7 @@ export const servicesStoreFetch = createAsyncThunk(
   "servicesStore/servicesStoreFetch",
   async () => {
     const response = await axios.get(
-      process.env.REACT_APP_VERCEL_URL_GET_SERVICES_STORE
+      process.env.REACT_APP_VERCEL_ENV_GET_SERVICES_STORE
     );
     return response.data.servicesStore;
   }

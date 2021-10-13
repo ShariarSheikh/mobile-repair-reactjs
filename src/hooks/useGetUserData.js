@@ -13,7 +13,7 @@ const useGetUserData = () => {
   useEffect(() => {
     const fetchUserData = () => {
       setLoading(true);
-      const url = process.env.REACT_APP_VERCEL_URL_FETCH_USER_DATA;
+      const url = process.env.REACT_APP_VERCEL_ENV_FETCH_USER_DATA;
       const config = {
         headers: {
           "Content-Type": "application/json",

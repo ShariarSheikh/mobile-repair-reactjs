@@ -31,7 +31,7 @@ const Login = () => {
       body: JSON.stringify(user),
     };
 
-    fetch(process.env.REACT_APP_VERCEL_URL_LOGIN, config)
+    fetch(process.env.REACT_APP_VERCEL_ENV_LOGIN, config)
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("token", data.token);
@@ -47,7 +47,7 @@ const Login = () => {
   };
 
   const fetchUserData = () => {
-    const url =process.env.REACT_APP_VERCEL_URL_FETCH_USER_DATA;
+    const url =process.env.REACT_APP_VERCEL_ENV_FETCH_USER_DATA;
     const config = {
       headers: {
         "Content-Type": "application/json",
