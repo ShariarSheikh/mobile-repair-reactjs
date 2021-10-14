@@ -8,11 +8,14 @@ const BrandsWeRepair = () => {
   const history = useHistory();
 
   const searchDevice = () => {
-    history.push(`/services/${searchBrand}`);
+    searchBrand && history.push(`/services/${searchBrand}`);
   };
 
   return (
-    <div id="ourServices" className="w-full 2xl:max-w-7xl xl:max-w-7xl mt-5 px-6 2xl:px-0 lg:w-full flex-col bg-white m-auto flex 2xl:flex-row items-center shadow-sm rounded-md 2xl:bg-indigo-100">
+    <div
+      id="ourServices"
+      className="w-full 2xl:max-w-7xl xl:max-w-7xl mt-5 px-6 2xl:px-0 lg:w-full flex-col bg-white m-auto flex 2xl:flex-row items-center shadow-sm rounded-md 2xl:bg-indigo-100"
+    >
       {/* left side */}
       <div className="2xl:w-2/4 w-full 2xl:h-96 h-52 relative flex items-center justify-center flex-col self-center">
         <img

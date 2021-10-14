@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router";
 import Api from "./components/Api";
+import ComingSoon from "./components/ComingSoon";
 import DashboardHome from "./components/DashboardHome";
 import DashboardNavigation from "./components/DashboardNavigation";
-import NotFound from "./components/NotFound";
 import Setting from "./components/Setting";
 
 const AdminProfile = () => {
@@ -22,7 +22,7 @@ const AdminProfile = () => {
               <Api />
             </Route>
             <Route path="*">
-              <NotFound />
+              <ComingSoon />
             </Route>
           </Switch>
         </div>

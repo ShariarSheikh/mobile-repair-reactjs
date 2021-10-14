@@ -122,7 +122,7 @@ const HeaderCenter = () => {
             Contact Us
           </li>
         </Link>
-        <Link to="/Support">
+        <Link to="/support">
           <li className="font-normal mr-5 text-base text-white cursor-pointer">
             Support
           </li>

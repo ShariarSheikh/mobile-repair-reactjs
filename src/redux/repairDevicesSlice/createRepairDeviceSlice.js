@@ -5,7 +5,7 @@ export const createRepairDevice = createAsyncThunk(
   "repairDevices/createRepairDevice",
   async (device) => {
     const response = await axios.post(
-      process.env.REACT_APP_VERCEL_ENV_GET_REPAIR_DEVICE_CREATE,
+      process.env.REACT_APP_GET_REPAIR_DEVICE_CREATE,
       device
     );
 

@@ -52,7 +52,7 @@ export const DropdownProfileMenu = ({ img }) => {
   }, [isOpenMenu]);
 
   const clickHandler = (text) => {
-    if (process.env.REACT_APP_VERCEL_ENV_ADMIN_EMAIL === user?.data.email) {
+    if (process.env.REACT_APP_ADMIN_EMAIL === user?.data.email) {
       //admin login
       text === "Profile" && history.push("/admin");
       text === "Setting" && history.push("/admin/setting");

@@ -5,7 +5,7 @@ export const serviceStoreDelete = createAsyncThunk(
   "serviceStore/servicesStoreDelete",
   async (id) => {
     const response = await axios.delete(
-      `${process.env.REACT_APP_VERCEL_ENV_GET_SERVICES_STORE_DELETE}${id}`
+      `${process.env.REACT_APP_GET_SERVICES_STORE_DELETE}${id}`
     );
     response.data.success && alert("Deleted successfully");
     return response.data;

@@ -5,7 +5,7 @@ export const updateRepairDevice = createAsyncThunk(
   "repairDevices/updateRepairDevice",
   async (device) => {
     const response = await axios.patch(
-      `${process.env.REACT_APP_VERCEL_ENV_GET_REPAIR_DEVICE_UPDATE}${device.id}`,
+      `${process.env.REACT_APP_GET_REPAIR_DEVICE_UPDATE}${device.id}`,
       device
     );
 

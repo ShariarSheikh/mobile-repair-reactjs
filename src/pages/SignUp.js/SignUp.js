@@ -34,7 +34,7 @@ const SignUp = () => {
     };
 
     fetch(
-      process.env.REACT_APP_VERCEL_ENV_REGISTER,
+      process.env.REACT_APP_REGISTER,
       config
     )
       .then((res) => res.json())
@@ -50,7 +50,7 @@ const SignUp = () => {
   };
 
   const fetchUserData = () => {
-    const url = process.env.REACT_APP_VERCEL_ENV_FETCH_USER_DATA;
+    const url = process.env.REACT_APP_FETCH_USER_DATA;
     const config = {
       headers: {
         "Content-Type": "application/json",

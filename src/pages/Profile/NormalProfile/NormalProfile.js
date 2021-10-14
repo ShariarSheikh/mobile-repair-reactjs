@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router";
-import NotFound from "./components/NotFound";
+import ComingSoon from "./components/ComingSoon";
 import Setting from "./components/Setting";
 import UserHome from "./components/UserHome";
 
@@ -15,7 +15,7 @@ const NormalProfile = () => {
             <Setting />
           </Route>
           <Route path="*">
-            <NotFound />
+            <ComingSoon />
           </Route>
         </Switch>
       </div>

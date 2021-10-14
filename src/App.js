@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import AdminRoute from "./components/AdminRoute/AdminRoute";
+import ComingSoon from "./components/ComingSoon/ComingSoon";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
@@ -39,6 +40,15 @@ const App = () => {
           </Route>
           <Route exact path="/store/:location">
             <StoreDetails />
+          </Route>
+          <Route exact path="/aboutus">
+            <ComingSoon />
+          </Route>
+          <Route exact path="/contactus">
+          <ComingSoon />
+          </Route>
+          <Route exact path="/support">
+          <ComingSoon />
           </Route>
 
           <AdminRoute path="/admin">

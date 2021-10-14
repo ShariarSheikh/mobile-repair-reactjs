@@ -6,7 +6,7 @@ export const deleteRepairDevice = createAsyncThunk(
   async (id) => {
     alert("device will delete now");
     const response = await axios.delete(
-      `${process.env.REACT_APP_VERCEL_ENV_GET_REPAIR_DEVICE_DELETE}${id}`
+      `${process.env.REACT_APP_GET_REPAIR_DEVICE_DELETE}${id}`
     );
 
     response.data.success && alert("Deleted successfully");
