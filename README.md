@@ -16,7 +16,7 @@ A website that provides services of repair mobile. This is a full-stack website 
 
 #### What is my purpose of making this website?
 
-Fast of all I love to create websites. And the second reason is to put this site in my portfolio. As a developer, I knew when I am going to create a big website I am going to face lots of coding problems, and solving this coding problem this will make me a good developer. 
+The second reason is to put this site in my portfolio.
 
 #### What technologies and npm package did I use on this website(front-end)?
 
