@@ -3,6 +3,8 @@
 </p>
 <p align="start">
   <img src="https://i.ibb.co/NpzrMgg/Screenshot-118.png" width="50%">
+</p>
+<p align="end">
   <img src="https://i.ibb.co/k55YSBm/Screenshot-121.png" width="50%">
 </p>
 
